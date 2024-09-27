@@ -1,13 +1,32 @@
-import { useTranslations } from "next-intl";
-import { unstable_setRequestLocale } from "next-intl/server";
+import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import { Link, routing } from "@/i18n/routing";
+import { readFile } from "fs/promises";
+import { compileMDX } from "next-mdx-remote/rsc";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
-export default function Home(props: { params: { locale: string } }) {
+
+async function getMDX(locale: string) {
+  const mdxRaw = await readFile(
+    process.cwd() + `/resources/mdx/${locale}.mdx`,
+    "utf-8"
+  );
+
+  const { content, frontmatter } = await compileMDX({
+    source: mdxRaw,
+    options: { parseFrontmatter: true },
+  });
+
+  return { content, frontmatter };
+}
+
+export default async function Home(props: {
+  params: { [key: string]: string };
+}) {
   unstable_setRequestLocale(props.params.locale);
-  const t = useTranslations("HomePage");
+  const t = await getTranslations("HomePage");
+  const { content, frontmatter } = await getMDX(props.params.locale);
 
   return (
     <div>
@@ -19,6 +38,10 @@ export default function Home(props: { params: { locale: string } }) {
         })}
       </p>
       <Link href="/about">{t("about")}</Link>
+      <div className="m-8">
+        <div className="pb-4 font-bold">{`${frontmatter["author"]}`}</div>
+        {content}
+      </div>
     </div>
   );
 }
