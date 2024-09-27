@@ -1,3 +1,42 @@
+# PersonalWebsite
+
+This is a personal website and porting from [Gatesby](https://github.com/NPPersonal/GatsbyPersonalWebsite) to NextJS.
+
+## Framework
+
+- **[Next.js](https://nextjs.org)**: Core
+- **[next-intl](https://next-intl-docs.vercel.app/)**: Localization
+
+### NextJS
+
+Features that are enabled
+
+- App router
+- Taiwind css
+- Typescript
+- Eslint
+
+### next-intl
+
+Following are used for integration and workflow
+
+- [Typescript](https://next-intl-docs.vercel.app/docs/workflows/typescript): For autocompletion
+- [Crowdin](https://next-intl-docs.vercel.app/docs/workflows/localization-management): Decouple locaization from project
+- [Sherlock](https://next-intl-docs.vercel.app/docs/workflows/vscode-integration#sherlock): Translation message extraction
+- [Consistent usage of navigation APIs](https://next-intl-docs.vercel.app/docs/workflows/linting#consistent-usage-of-navigation-apis): Make sure developer use next-intl navigation APIs. Developers will be prompted to import from @/i18n/routing when they try to import navigation APIs from Next.js
+
+## Version control branch
+
+- **main**: For final stable version
+- **nightly**: For every single development iteration
+- **locale**: Only for localization translation. ⚠️ **Only modify source translation file en.json, nothing less**
+  - When source translation file(en.json) updated in local development then it need to be merged into this branch and pushed to github so Crowdin will be notified about translation
+  - When Crowdin completed translation message it will make pull request to this branch on github ready to be merge from l10n_locale branch
+  - Local development need to pull and merge from this branch in order to receive update to date translation messages
+- **l10n_locale**: Setup and used by Crowdin. ⚠️ **Don't touch it**
+
+# NextJS
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
