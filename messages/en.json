@@ -3,7 +3,8 @@
     "title": "Hello world!",
     "subtitle": "Welcome",
     "about": "Go to the about page",
-    "desc": "hemo page desc"
+    "desc": "hemo page desc",
+    "description": "Home page description<br></br>It is good right!"
   },
   "AboutPage": {
     "title": "About me",

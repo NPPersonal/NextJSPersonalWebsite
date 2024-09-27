@@ -13,7 +13,11 @@ export default function Home(props: { params: { locale: string } }) {
     <div>
       <h1>{t("title")}</h1>
       <h2>{t("subtitle")}</h2>
-      <p>{t("desc")}</p>
+      <p>
+        {t.rich("description", {
+          br: () => <br />,
+        })}
+      </p>
       <Link href="/about">{t("about")}</Link>
     </div>
   );
