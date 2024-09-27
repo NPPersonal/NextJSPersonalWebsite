@@ -3,7 +3,8 @@
     "title": "哈摟世界!",
     "subtitle": "歡迎",
     "about": "看關於我",
-    "desc": "這是首頁的介紹\n不錯吧"
+    "desc": "這是首頁的介紹\n不錯吧",
+    "description": "Home page description<br></br>It is good right!"
   },
   "AboutPage": {
     "title": "關於我",
