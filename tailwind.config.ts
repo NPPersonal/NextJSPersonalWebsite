@@ -56,6 +56,18 @@ const config: Config = {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      boxShadow: {
+        elvation1: "0 5px 20px 0px var(--shadow)",
+      },
+      animation: {
+        "flash-caret": "flash-quick 0.7s linear infinite",
+      },
+      keyframes: {
+        "flash-quick": {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0" },
+        },
+      },
     },
   },
   // eslint-disable-next-line @typescript-eslint/no-require-imports
