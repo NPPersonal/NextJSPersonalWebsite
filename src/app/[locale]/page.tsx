@@ -2,6 +2,8 @@ import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import { Link, routing } from "@/i18n/routing";
 import { readFile } from "fs/promises";
 import { compileMDX } from "next-mdx-remote/rsc";
+import { Button } from "@/components/ui/button";
+import { ModeToggle } from "@/components/theme-toggle";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -42,6 +44,8 @@ export default async function Home(props: {
         <div className="pb-4 font-bold">{`${frontmatter["author"]}`}</div>
         {content}
       </div>
+      <Button>Click me</Button>
+      <ModeToggle />
     </div>
   );
 }
