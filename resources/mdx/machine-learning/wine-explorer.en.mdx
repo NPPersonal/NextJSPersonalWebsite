@@ -1,0 +1,82 @@
+---
+name: "Wine Explorer"
+title: "Wine Explorer App"
+author: "Ming-Chun Hung"
+slug: "wine-explorer"
+category: "machine-learning"
+description: "Explore wines by your description"
+preview_img_id: "personal-web-image-assets/machine-learning/wine-finder/preview"
+images_id:
+  [
+    "personal-web-image-assets/machine-learning/wine-finder/preview",
+    "personal-web-image-assets/machine-learning/wine-finder/img1",
+    "personal-web-image-assets/machine-learning/wine-finder/img2",
+    "personal-web-image-assets/machine-learning/wine-finder/img3",
+    "personal-web-image-assets/machine-learning/wine-finder/img4",
+  ]
+---
+
+### Introduction
+
+---
+
+Don't know where it was produced? Don't know where it came from? All you need
+to know is how your feel about it and your description. This app will list
+all possible wines' information. Perhaps there is one you are looking for.
+
+<br />
+
+### Motivation & Purpose
+
+---
+
+Looking for wines you like is like picking needle from ocean. Looking through
+bunch of reviews is a pain or sometime your have no clues where to start.
+
+Use your sentiment about a wine for searching could shorten this process.
+
+<br />
+
+### More
+
+---
+
+The machine learning model was trained with dataset from [Kaggle](https://www.kaggle.com/datasets/zynicide/wine-reviews).
+
+There are 2 models, old model and new model. And they use different training method.
+
+- Old model: supervise learning
+- New model: unsupervise learning
+
+Both models find the similarity of description to predouce final result.
+
+Frameworks were used to build this app:
+
+- [Scikit-Learn](https://scikit-learn.org/) : Machine learning framework for model
+- [Streamlit](https://streamlit.io/) : Backend with frontend app for new version
+- [Nextjs](https://nextjs.org/) : Frontend app for old version
+- [Docker](https://www.docker.com/) : Containerized backend for old version
+
+<br />
+
+### Note
+
+---
+
+Old version only provide wine's title, country, score, price(💲USD) and description.
+Backend server often put to sleep if no interaction for period of time. Therefore
+website(frontend) will take a while to wait for server to wake up to be able to function.
+
+New version only provide wine's location information.
+
+<br />
+
+### Website
+
+---
+
+#### [Old version](https://ask-me-wines.netlify.app/)
+
+#### [New version](https://wineidentifier.streamlit.app/)
+
+<br />

@@ -1,0 +1,83 @@
+---
+name: "Style Transfer"
+title: "Style Transfer App"
+author: "Ming-Chun Hung"
+slug: "style-transfer"
+category: "machine-learning"
+description: "Convert real photo to vangogh painting style"
+preview_img_id: "personal-web-image-assets/machine-learning/photo2vangogh/preview"
+images_id:
+  [
+    "personal-web-image-assets/machine-learning/photo2vangogh/app",
+    "personal-web-image-assets/machine-learning/photo2vangogh/img1-origin",
+    "personal-web-image-assets/machine-learning/photo2vangogh/img1-transform",
+    "personal-web-image-assets/machine-learning/photo2vangogh/img2-origin",
+    "personal-web-image-assets/machine-learning/photo2vangogh/img2-transform",
+    "personal-web-image-assets/machine-learning/photo2vangogh/img3-origin",
+    "personal-web-image-assets/machine-learning/photo2vangogh/img3-transform",
+    "personal-web-image-assets/machine-learning/photo2vangogh/img4-origin",
+    "personal-web-image-assets/machine-learning/photo2vangogh/img4-transform",
+    "personal-web-image-assets/machine-learning/photo2vangogh/img5-origin",
+    "personal-web-image-assets/machine-learning/photo2vangogh/img5-transform",
+  ]
+---
+
+### Introduction
+
+---
+
+Style transfer app allow you to transform a real photo into a vangogh
+panting style. The result is combination of real photo with vangogh style.
+
+<br />
+
+### Motivation & Purpose
+
+---
+
+Learning a particular skill of panting style then apply it on drawing of beautiful
+scene or object would be a time consuming and difficult process. Not everyone can
+do it. Hand over this task to artificial intelligent can shorten this process.
+
+This artifical intelligent learn the style of painting from vangogh and then transform
+a real photo into the style.
+
+<br />
+
+### More
+
+---
+
+The model was trained with
+dataset from [Kaggle](https://www.kaggle.com/datasets/suyashdamle/cyclegan?select=vangogh2photo).
+
+The model use [CycleGAN](https://www.tensorflow.org/tutorials/generative/cyclegan) to achieve
+style transfer for real photo.
+
+The model's size had been reduced by using
+[DepthwiseConv2D](https://www.tensorflow.org/api_docs/python/tf/keras/layers/DepthwiseConv2D)
+instead of [Conv2D](https://www.tensorflow.org/api_docs/python/tf/keras/layers/Conv2D).
+
+Frameworks were used to build this app:
+
+- [Tensorflow](https://www.tensorflow.org/) : Deep learning framework for the model
+- [Streamlit](https://streamlit.io/) : Frontend app
+
+<br />
+
+### Note
+
+---
+
+From time to time this app is not able to complete transfer style properly due to
+dataset was limited and hardware restriction during model training.
+
+<br />
+
+### Website
+
+---
+
+#### [Style Transfer](https://vangoghstyletransformationapp.streamlit.app/)
+
+<br />

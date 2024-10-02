@@ -20,6 +20,7 @@ const typographyVariants = cva("", {
       lg: "text-lg",
       xl: "text-xl",
       p: "leading-7 [&:not(:first-child)]:mt-6",
+      strong: "font-bold",
     },
   },
   defaultVariants: {

@@ -1,41 +1,38 @@
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
-import { readFile } from "fs/promises";
-import { compileMDX } from "next-mdx-remote/rsc";
 import TypeWriter from "@/components/type-writer";
 import { Typography } from "@/components/ui/typography";
 import RenderInView from "@/components/render-in-view";
 import Image from "next/image";
 import landingImage from "../../../public/static/images/landing.jpeg";
+import { getMDX } from "@/lib/mdx";
+import { defaultMDXComponents } from "@/components/mdx-components";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-async function getMDX(locale: string) {
-  const mdxRaw = await readFile(
-    process.cwd() + `/resources/mdx/${locale}.mdx`,
-    "utf-8"
-  );
-
-  const { content, frontmatter } = await compileMDX({
-    source: mdxRaw,
-    options: { parseFrontmatter: true },
-  });
-
-  return { content, frontmatter };
-}
-
-export default async function HomePage(props: {
+export default async function HomePage({
+  params: { locale },
+}: {
   params: { [key: string]: string };
 }) {
-  unstable_setRequestLocale(props.params.locale);
+  unstable_setRequestLocale(locale);
   const t = await getTranslations("HomePage");
+  const { content } = (
+    await getMDX(
+      "resources/mdx/landing",
+      locale,
+      "",
+      "utf-8",
+      defaultMDXComponents
+    )
+  )[0];
 
   return (
-    <div className="flex flex-col sm:flex-row justify-center items-center">
+    <div className="flex flex-col md:flex-row">
       <RenderInView
-        className="mx-10"
+        className="p-10"
         options={{
           triggerOnce: true,
         }}
@@ -50,14 +47,18 @@ export default async function HomePage(props: {
             delayStartMS={1600}
           />
         </Typography>
+        {content}
       </RenderInView>
-      <div className="my-16">
+      <div className="flex flex-col justify-center items-center px-10">
         <Image
           className="m-8 rounded-lg shadow-elvation1"
           src={landingImage}
           alt="landing"
-          width={400}
-          height={600}
+          sizes="100vw"
+          style={{
+            width: "100rem",
+            height: "auto",
+          }}
         />
       </div>
     </div>

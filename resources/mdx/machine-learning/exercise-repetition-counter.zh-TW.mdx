@@ -1,0 +1,90 @@
+---
+name: "運動次數偵測"
+title: "運動次數偵測器"
+author: "Ming-Chun Hung"
+slug: "exercise-repetition-counter"
+category: "machine-learning"
+description: "自動偵測特定運動的動作次數"
+preview_img_id: "personal-web-image-assets/machine-learning/repetition-counter/preview"
+images_id:
+  [
+    "personal-web-image-assets/machine-learning/repetition-counter/image1",
+    "personal-web-image-assets/machine-learning/repetition-counter/image2",
+    "personal-web-image-assets/machine-learning/repetition-counter/image3",
+    "personal-web-image-assets/machine-learning/repetition-counter/image4",
+    "personal-web-image-assets/machine-learning/repetition-counter/image5",
+    "personal-web-image-assets/machine-learning/repetition-counter/image6",
+  ]
+---
+
+### 簡介
+
+---
+
+這個 App 主要目的是計數使用者指定的運動的動作次數並追蹤全部已完成的運動的動作的次數.
+
+App 可以接受預錄製的運動的動作影片或者攝影機的即時串流影片. 透過這兩種方法使用者可以用
+預錄製的運動的動作影片來計數和追蹤運動的動作次數, 或這也可透過攝影機的即時串流來做即時
+的運動動作計數和追蹤.
+
+<br />
+
+### 目的
+
+---
+
+運動動作計數和追蹤需要透過人為的方法, 一則透過自己二則透過他人來完成. 計數次數
+的人有時會忘記或忽略倒置不完整的次數總和, 又或者人為因素導致不完整的動作被計算到總
+次數裡.
+
+這 App 可以被當作為協助工具來幫助運動人員來計數運動動作次數和追蹤總和. 這將可以降低人為的干預
+和降低人為因素的錯誤.
+
+<br />
+
+### 更多
+
+---
+
+開發這 App 包含主要 2 個主要的方法. 第一是使用深度學習模型在每幀裡個來追蹤人體關節點. 第二
+是使用訊號處理方法來偵測運動動作次數.
+
+影片來源有兩種選項:
+
+- 影片片段 : 一個預先錄製的影片片段
+- 攝影機 : 攝影機的即時影片串流
+
+使用的框架:
+
+- [Tensorflow](https://www.tensorflow.org/) : 深度學習框架
+- [ONNX Runtime](https://onnxruntime.ai/) : 在裝置上用於模型預測的框架
+- [PyQt](https://wiki.qt.io/Qt_for_Python) : 應用程式介面
+
+<br />
+
+### 注意
+
+---
+
+- 動態環境光源可能導致整體應用程式的精準度降低
+- 應用程式只針對一個運動人員, 無法針對多個運動人員
+- 應用程式允許一定程度的人部位在攝像區外但過多可能導致
+  精準度降低
+
+<br />
+
+### 支援平台
+
+---
+
+- MacOSX
+- Windows
+- Linux
+
+### 下載
+
+---
+
+- [點這裡](https://mega.nz/folder/WJhi0ZTK#eWCuymKMZLN0NJTfE995Bg)
+
+<br />

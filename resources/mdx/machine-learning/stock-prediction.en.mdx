@@ -1,0 +1,96 @@
+---
+name: "Stock Prediction"
+title: "Stock Prediction"
+author: "Ming-Chun Hung"
+slug: "stock-prediction"
+category: "machine-learning"
+description: "Visualize stock's data and make prediction 
+for next day"
+preview_img_id: "personal-web-image-assets/machine-learning/stock-prediction/preview"
+images_id:
+  [
+    "personal-web-image-assets/machine-learning/stock-prediction/img1",
+    "personal-web-image-assets/machine-learning/stock-prediction/img2",
+    "personal-web-image-assets/machine-learning/stock-prediction/img3",
+    "personal-web-image-assets/machine-learning/stock-prediction/img4",
+    "personal-web-image-assets/machine-learning/stock-prediction/img5",
+    "personal-web-image-assets/machine-learning/stock-prediction/img6",
+  ]
+---
+
+### Introduction
+
+---
+
+Stock prediction allow you to visualize any stock's data in graph. Furthermore,
+it will predict stock's data for next day.
+
+You are able to manage stock by adding new stocks or remove it.
+
+Here is a demo of video 👇.
+
+<iframe
+  src="https://www.youtube.com/embed/EjyubJqiDE0?si=P2j-15hbzZ0gZNOn"
+  title="YouTube video player"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  allowfullscreen
+></iframe>
+
+<br />
+
+### Motivation & Purpose
+
+---
+
+Combining machine learning with financial stock and then make
+prediction for stock. This could help stock trader to make decision
+whether they should buy or sell.
+
+<br />
+
+### More
+
+---
+
+The model for stock prediction is an variant of
+[DecisionTreeRegressor](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.html).
+In this project it use
+[RandomForestRegressor](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html)
+as model for training and making prediction.
+
+This small project use [Docker](https://www.docker.com/)
+to run several services to achieve scalability. And use [Streamlit](https://streamlit.io/)
+to build frontend web app.
+
+The service allow user to add or remove stock and react to user's change in real-time.
+In addition it is able to learn stock data and make prediction everyday.
+
+All stocks' data are from [Yahoo Finance](https://finance.yahoo.com/).
+
+Frameworks were used to build this app:
+
+- [Scikit-Learn](https://scikit-learn.org/stable/) : For building model, learning data and making prediction
+- [Streamlit](https://streamlit.io/) : Frontend web app
+- [Docker](https://www.docker.com/) : Containerized backend services
+
+<br />
+
+### Note
+
+---
+
+This small project build and test on local machine so far. Therefore there is
+no live service available. Due to no budget for renting a server in order to
+run docker services, I have no intention to put it in public. However it's
+source code can be download from GitHub.
+
+<br />
+
+### Website
+
+---
+
+#### [GitHub](https://github.com/NPMachineLearning/StockPrediction)
+
+<br />

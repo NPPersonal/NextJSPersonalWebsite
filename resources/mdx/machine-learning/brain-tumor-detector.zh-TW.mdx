@@ -1,0 +1,91 @@
+---
+name: "人腦腫瘤偵測"
+title: "人腦腫瘤偵測器"
+author: "Ming-Chun Hung"
+slug: "brain-tumor-detector"
+category: "machine-learning"
+description: "偵測3種人腦腫瘤. 這個偵測器可以掃描核磁共振影像並偵測人腦腫瘤."
+preview_img_id: "personal-web-image-assets/machine-learning/brain-tumor/preview"
+images_id:
+  [
+    "personal-web-image-assets/machine-learning/brain-tumor/preview",
+    "personal-web-image-assets/machine-learning/brain-tumor/img1",
+    "personal-web-image-assets/machine-learning/brain-tumor/img2",
+    "personal-web-image-assets/machine-learning/brain-tumor/img3",
+    "personal-web-image-assets/machine-learning/brain-tumor/img4",
+    "personal-web-image-assets/machine-learning/brain-tumor/img5",
+    "personal-web-image-assets/machine-learning/brain-tumor/img6",
+  ]
+---
+
+### 簡介
+
+---
+
+這是一個人腦腫瘤偵測器並可以偵測 3 種不同的人腦腫瘤. 將核磁共振影像檔傳給偵測器, 偵測器
+就會掃描影像檔並回報偵測結果. 結果包含是否有腫瘤, 哪種的腫瘤和機率.
+
+這個偵測器使用人工智慧的深度學習來協助醫療人員和病患偵測腫瘤.
+
+<br />
+
+### 目的
+
+---
+
+這個人腦腫瘤偵測器是在學習和研究電腦視覺深度學習期間開發出來的.
+
+在核磁共振掃描後通常會要等一段時間經由醫師檢查並判斷解果, 這可能等上幾天或一個星期. 透過這個人腦腫瘤
+偵測器可將時間縮段並做預先偵測.
+
+<br />
+
+### 更多
+
+---
+
+這個人腦腫瘤偵測器包含了一個深度學習模型. 用了大量的人腦核磁共振影像資料來訓練該模型.
+測器可偵測 3 種不同的人腦腫瘤.
+
+- [膠質細胞瘤](https://zh.wikipedia.org/zh-tw/%E8%83%B6%E8%B4%A8%E6%AF%8D%E7%BB%86%E8%83%9E%E7%98%A4)
+- [腦膜瘤](https://www.kmuh.org.tw/www/kmcj/data/9608/12.htm)
+- [垂體瘤](https://zh.wikipedia.org/zh-tw/%E5%9E%82%E4%BD%93%E7%98%A4)
+
+此外該偵測器會回報可能性的機率.
+
+用於訓練的人腦核磁共振影像資料包含多角度. 因此模型可接受以下人腦核磁共振影像角度.
+
+- **上視圖**
+- **左視圖**
+- **右視圖**
+- **前視圖**
+- **後視圖**
+
+檢測解果將告訴你是否有腫瘤, 哪種類的腫瘤和可能性的機率.
+
+訓練模型的資料
+[Kaggle](https://www.kaggle.com/datasets/masoudnickparvar/brain-tumor-mri-dataset).
+
+使用的框架:
+
+- [Tensorflow](https://www.tensorflow.org/) : 深度學習框架
+- [Streamlit](https://streamlit.io/) : 前端網頁
+
+<br />
+
+### 注意
+
+---
+
+模型主要用於協助並不能 100%保證, 因此並不要將該偵測器當作個人醫生.
+建議尋求專業醫療人員.
+
+<br />
+
+### 網站
+
+---
+
+#### [人腦腫瘤偵測器](https://braintumordetectorapp.streamlit.app/)
+
+<br />

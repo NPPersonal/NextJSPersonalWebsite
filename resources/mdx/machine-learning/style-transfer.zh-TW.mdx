@@ -1,0 +1,77 @@
+---
+name: "風格轉換"
+title: "風格轉換"
+author: "Ming-Chun Hung"
+slug: "style-transfer"
+category: "machine-learning"
+description: "將真實的照片轉換成梵谷風格的圖畫"
+preview_img_id: "personal-web-image-assets/machine-learning/photo2vangogh/preview"
+images_id:
+  [
+    "personal-web-image-assets/machine-learning/photo2vangogh/app",
+    "personal-web-image-assets/machine-learning/photo2vangogh/img1-origin",
+    "personal-web-image-assets/machine-learning/photo2vangogh/img1-transform",
+    "personal-web-image-assets/machine-learning/photo2vangogh/img2-origin",
+    "personal-web-image-assets/machine-learning/photo2vangogh/img2-transform",
+    "personal-web-image-assets/machine-learning/photo2vangogh/img3-origin",
+    "personal-web-image-assets/machine-learning/photo2vangogh/img3-transform",
+    "personal-web-image-assets/machine-learning/photo2vangogh/img4-origin",
+    "personal-web-image-assets/machine-learning/photo2vangogh/img4-transform",
+    "personal-web-image-assets/machine-learning/photo2vangogh/img5-origin",
+    "personal-web-image-assets/machine-learning/photo2vangogh/img5-transform",
+  ]
+---
+
+### 簡介
+
+---
+
+此風格轉換的應用是將真實的照片轉換成梵谷風格的圖畫. 轉換後的圖將會是結合了
+真實原有的照片和梵谷畫家的繪畫風格.
+
+<br />
+
+### 目的
+
+---
+
+學習特有的繪畫風格並依照所看到的美景畫出一幅圖是一個漫長艱難的路程. 並不是每隔人都
+可以做到. 將學習的工作交給人工智慧可以縮短這個過程.
+
+這個人工智慧學習梵谷的畫風並將真實片轉換成梵谷的繪畫風格.
+
+<br />
+
+### 更多
+
+---
+
+模型訓練資料 [Kaggle](https://www.kaggle.com/datasets/suyashdamle/cyclegan?select=vangogh2photo).
+
+模型使用[CycleGAN](https://www.tensorflow.org/tutorials/generative/cyclegan)來達到風格轉換.
+
+為了降低模型大小所以將[Conv2D](https://www.tensorflow.org/api_docs/python/tf/keras/layers/Conv2D)
+取代成[DepthwiseConv2D](https://www.tensorflow.org/api_docs/python/tf/keras/layers/DepthwiseConv2D).
+
+該應用軟體使用到的框架:
+
+- [Tensorflow](https://www.tensorflow.org/) : 深度學習框架
+- [Streamlit](https://streamlit.io/) : 網頁前端
+
+<br />
+
+### 注意
+
+---
+
+由於訓練的資料數量有限以及硬體限制, 有時並未能完整將照片正確轉化.
+
+<br />
+
+### 網站
+
+---
+
+#### [風格轉換](https://vangoghstyletransformationapp.streamlit.app/)
+
+<br />

@@ -1,0 +1,99 @@
+---
+name: "Tumor Detector"
+title: "Brain Tumor Detector App"
+author: "Ming-Chun Hung"
+slug: "brain-tumor-detector"
+category: "machine-learning"
+description: "Detect 3 types of human brain tumor. This detector is able 
+to detect brain tumor with provided medical MRI images."
+preview_img_id: "personal-web-image-assets/machine-learning/brain-tumor/preview"
+images_id:
+  [
+    "personal-web-image-assets/machine-learning/brain-tumor/preview",
+    "personal-web-image-assets/machine-learning/brain-tumor/img1",
+    "personal-web-image-assets/machine-learning/brain-tumor/img2",
+    "personal-web-image-assets/machine-learning/brain-tumor/img3",
+    "personal-web-image-assets/machine-learning/brain-tumor/img4",
+    "personal-web-image-assets/machine-learning/brain-tumor/img5",
+    "personal-web-image-assets/machine-learning/brain-tumor/img6",
+  ]
+---
+
+### Introduction
+
+---
+
+This is a human brain tumor detector app that can identify 3 types of tumor.
+Given a medical MRI image, app will analyse the image and return an analysed result.
+The result indicate whether there is a tumor detected or not with probability.
+
+The purpose of the app is to take advantage of machine learning to assist
+medical professional or patient in brain tumor detection
+
+<br />
+
+### Motivation & Purpose
+
+---
+
+This tumor detector app was builded during study of computer vision in deep learning.
+
+It usually take a period of time to waiting to see the result of MRI of brain from doctor.
+This waiting could take days to a week.
+
+The tumor detector app can shorten the waiting and be used as personal assistance.
+
+<br />
+
+### More
+
+---
+
+The tumor detector app include a deep learning model that was trained on a set of MRI
+human brain images. And the app can detect 3 type of brain cancers.
+
+- [Glioma](https://en.wikipedia.org/wiki/Glioma),
+- [Meningioma](https://en.wikipedia.org/wiki/Meningioma),
+- [Pituitary](https://en.wikipedia.org/wiki/Pituitary_gland)
+
+In addition it also report the probability of have any of these cancer in percentage.
+
+The set of MRI images was used to train the deep learning model are in different angles of human head.
+Therefore new MRI image can be in any angles as below.
+
+- **top**
+- **left**
+- **right**
+- **front**
+- **back**
+
+The result tell you whether there is a tumor detected or not, what type of tumor and
+the probability.
+
+The model was trained with dataset from
+[Kaggle](https://www.kaggle.com/datasets/masoudnickparvar/brain-tumor-mri-dataset).
+
+Frameworks were used to build this app:
+
+- [Tensorflow](https://www.tensorflow.org/) : Deep learning framework for the model
+- [Streamlit](https://streamlit.io/) : Frontend app
+
+<br />
+
+### Note
+
+---
+
+The detecotr is only for assistance and nothing is 100% certain.
+Don't use this detector as a personal doctor. Seeking for professional
+doctor is recommend.
+
+<br />
+
+### Website
+
+---
+
+#### [Brain Tumor Detector](https://braintumordetectorapp.streamlit.app/)
+
+<br />
