@@ -1,14 +1,11 @@
 {
   "HomePage": {
-    "title": "哈摟世界!",
-    "subtitle": "歡迎",
-    "about": "看關於我",
+    "title": "Hello!",
+    "subtitle": "This is my personal website",
     "description": "主頁的介紹<br></br>不錯吧!",
-    "hello": "Hello",
-    "welcome": "Welcome",
     "metadata": {
-      "title": "Home",
-      "description": "Ming-Chun Hung personal website created by Next.js"
+      "title": "主頁",
+      "description": "洪銘駿的個人網站, 使用Next.js"
     }
   },
   "AboutPage": {
