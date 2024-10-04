@@ -3,8 +3,8 @@
     "title": "你好!",
     "subtitle": "這是我的個人網站",
     "description": "主頁的介紹<br></br>不錯吧!",
-    "metadata_title": "Home",
-    "metadata_description": "Ming-Chun Hung personal website created by Next.js"
+    "metadata_title": "主頁",
+    "metadata_description": "洪銘駿的個人網站, 使用Next.js"
   },
   "AboutPage": {
     "title": "關於我",
