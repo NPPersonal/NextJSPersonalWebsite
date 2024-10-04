@@ -10,15 +10,24 @@ import { defaultMDXComponents } from "@/components/mdx-components";
 import DelayRender from "@/components/delay-render";
 import FramerMotionWrapper from "@/components/motion/framer-motion-client";
 
+type HomePageProps = {
+  params: { [key: string]: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
+
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-export default async function HomePage({
-  params: { locale },
-}: {
-  params: { [key: string]: string };
-}) {
+export async function generateMetadata() {
+  const t = await getTranslations("HomePage.metadata");
+  return {
+    title: t("title"),
+    description: t("description"),
+  };
+}
+
+export default async function HomePage({ params: { locale } }: HomePageProps) {
   unstable_setRequestLocale(locale);
   const t = await getTranslations("HomePage");
   const title = t("hello");

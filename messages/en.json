@@ -5,7 +5,11 @@
     "about": "Go to the about page",
     "description": "Home page description<br></br>It is good right!",
     "hello": "Hello",
-    "welcome": "Welcome"
+    "welcome": "Welcome",
+    "metadata": {
+      "title": "Home",
+      "description": "Ming-Chun Hung personal website created by Next.js"
+    }
   },
   "AboutPage": {
     "title": "About me",
