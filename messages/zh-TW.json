@@ -1,7 +1,7 @@
 {
   "HomePage": {
-    "title": "Hello!",
-    "subtitle": "This is my personal website",
+    "title": "你好!",
+    "subtitle": "這是我的個人網站",
     "description": "主頁的介紹<br></br>不錯吧!",
     "metadata": {
       "title": "主頁",
