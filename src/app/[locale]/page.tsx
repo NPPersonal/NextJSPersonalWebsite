@@ -20,10 +20,10 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata() {
-  const t = await getTranslations("HomePage.metadata");
+  const t = await getTranslations("HomePage");
   return {
-    title: t("title"),
-    description: t("description"),
+    title: t("metadata_title"),
+    description: t("metadata_description"),
   };
 }
 
