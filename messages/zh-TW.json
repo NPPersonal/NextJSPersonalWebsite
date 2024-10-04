@@ -3,7 +3,13 @@
     "title": "哈摟世界!",
     "subtitle": "歡迎",
     "about": "看關於我",
-    "description": "主頁的介紹<br></br>不錯吧!"
+    "description": "主頁的介紹<br></br>不錯吧!",
+    "hello": "Hello",
+    "welcome": "Welcome",
+    "metadata": {
+      "title": "Home",
+      "description": "Ming-Chun Hung personal website created by Next.js"
+    }
   },
   "AboutPage": {
     "title": "關於我",
