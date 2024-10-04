@@ -7,6 +7,7 @@ import Image from "next/image";
 import landingImage from "../../../public/static/images/landing.jpeg";
 import { getMDX } from "@/lib/mdx";
 import { defaultMDXComponents } from "@/components/mdx-components";
+import DelayRender from "@/components/delay-render";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -37,16 +38,16 @@ export default async function HomePage({
           triggerOnce: true,
         }}
       >
-        <Typography className="text-center" variant="h2">
-          <TypeWriter text={t("hello")} durationMS={700} delayStartMS={200} />
-        </Typography>
-        <Typography className="text-center" variant="h3">
-          <TypeWriter
-            text={t("welcome")}
-            durationMS={700}
-            delayStartMS={1600}
-          />
-        </Typography>
+        <DelayRender delayMS={200}>
+          <Typography className="text-center" variant="h2">
+            <TypeWriter text={t("hello")} durationMS={1400} />
+          </Typography>
+        </DelayRender>
+        <DelayRender delayMS={1600}>
+          <Typography className="text-center" variant="h3">
+            <TypeWriter text={t("welcome")} durationMS={1700} />
+          </Typography>
+        </DelayRender>
         {content}
       </RenderInView>
       <div className="flex flex-col justify-center items-center px-10">

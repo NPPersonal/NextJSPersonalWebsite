@@ -1,3 +1,4 @@
+import "server-only";
 import { glob } from "glob";
 import path from "path";
 import { MDXProvider } from "@mdx-js/react";

@@ -4,36 +4,25 @@ import { useInView, IntersectionOptions } from "react-intersection-observer";
 
 export type RenderInViewProps = React.ComponentProps<"div"> & {
   options?: IntersectionOptions;
-  delayMS?: number;
 };
+
+/**
+ * Display children component when scroll in viewport
+ *
+ * Base on https://www.npmjs.com/package/react-intersection-observer
+ *
+ * @param option https://www.npmjs.com/package/react-intersection-observer#api
+ * @returns
+ */
 export default function RenderInView({
   options = undefined,
-  delayMS = 0,
   children,
   ...props
 }: RenderInViewProps) {
   const [ref, inView] = useInView(options);
-  const [ready, setReady] = React.useState(false);
-
-  React.useEffect(() => {
-    let timeout = null;
-    if (delayMS > 0) {
-      timeout = setTimeout(() => {
-        setReady(true);
-      }, delayMS);
-    } else {
-      setReady(true);
-    }
-    return () => {
-      if (timeout) {
-        clearTimeout(timeout);
-      }
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return (
-    <div ref={ready ? ref : null} {...props}>
+    <div ref={ref} {...props}>
       {inView ? children : null}
     </div>
   );
