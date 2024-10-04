@@ -58,7 +58,7 @@ export default async function HomePage({ params: { locale } }: HomePageProps) {
           </Typography>
         </DelayRender>
         <DelayRender delayMS={1600}>
-          <Typography className="text-center" variant="h3">
+          <Typography className="text-center pt-2" variant="h5">
             <TypeWriter text={subtitle} durationMS={subtitleDuration} />
           </Typography>
         </DelayRender>
@@ -84,6 +84,7 @@ export default async function HomePage({ params: { locale } }: HomePageProps) {
           <Image
             className="m-8 rounded-lg shadow-elvation1"
             src={landingImage}
+            priority
             alt="landing"
             sizes="100vw"
             style={{
