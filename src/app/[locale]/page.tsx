@@ -30,8 +30,8 @@ export async function generateMetadata() {
 export default async function HomePage({ params: { locale } }: HomePageProps) {
   unstable_setRequestLocale(locale);
   const t = await getTranslations("HomePage");
-  const title = t("hello");
-  const subtitle = t("welcome");
+  const title = t("title");
+  const subtitle = t("subtitle");
   const titleDuration = title.length * 100;
   const subtitleDuration = subtitle.length * 150;
   const { content } = (

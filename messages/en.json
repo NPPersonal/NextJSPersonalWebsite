@@ -1,11 +1,8 @@
 {
   "HomePage": {
-    "title": "Hello world!",
-    "subtitle": "Welcome",
-    "about": "Go to the about page",
+    "title": "Hello!",
+    "subtitle": "This is my personal website",
     "description": "Home page description<br></br>It is good right!",
-    "hello": "Hello",
-    "welcome": "Welcome",
     "metadata": {
       "title": "Home",
       "description": "Ming-Chun Hung personal website created by Next.js"
