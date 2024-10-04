@@ -8,6 +8,7 @@ import landingImage from "../../../public/static/images/landing.jpeg";
 import { getMDX } from "@/lib/mdx";
 import { defaultMDXComponents } from "@/components/mdx-components";
 import DelayRender from "@/components/delay-render";
+import FramerMotionWrapper from "@/components/motion/framer-motion-client";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -20,6 +21,10 @@ export default async function HomePage({
 }) {
   unstable_setRequestLocale(locale);
   const t = await getTranslations("HomePage");
+  const title = t("hello");
+  const subtitle = t("welcome");
+  const titleDuration = title.length * 100;
+  const subtitleDuration = subtitle.length * 150;
   const { content } = (
     await getMDX(
       "resources/mdx/landing",
@@ -33,35 +38,52 @@ export default async function HomePage({
   return (
     <div className="flex flex-col md:flex-row">
       <RenderInView
-        className="p-10"
+        className="pt-10 px-4"
         options={{
           triggerOnce: true,
         }}
       >
         <DelayRender delayMS={200}>
           <Typography className="text-center" variant="h2">
-            <TypeWriter text={t("hello")} durationMS={1400} />
+            <TypeWriter text={title} durationMS={titleDuration} />
           </Typography>
         </DelayRender>
         <DelayRender delayMS={1600}>
           <Typography className="text-center" variant="h3">
-            <TypeWriter text={t("welcome")} durationMS={1700} />
+            <TypeWriter text={subtitle} durationMS={subtitleDuration} />
           </Typography>
         </DelayRender>
-        {content}
-      </RenderInView>
-      <div className="flex flex-col justify-center items-center px-10">
-        <Image
-          className="m-8 rounded-lg shadow-elvation1"
-          src={landingImage}
-          alt="landing"
-          sizes="100vw"
-          style={{
-            width: "100rem",
-            height: "auto",
+        <FramerMotionWrapper
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{
+            type: "spring",
+            damping: 10,
+            stiffness: 100,
+            delay: 3,
           }}
-        />
-      </div>
+        >
+          <div className="mt-8">{content}</div>
+        </FramerMotionWrapper>
+      </RenderInView>
+      <FramerMotionWrapper
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5 }}
+      >
+        <div className="flex flex-col justify-center items-center px-4">
+          <Image
+            className="m-8 rounded-lg shadow-elvation1"
+            src={landingImage}
+            alt="landing"
+            sizes="100vw"
+            style={{
+              width: "100rem",
+              height: "auto",
+            }}
+          />
+        </div>
+      </FramerMotionWrapper>
     </div>
   );
 }
