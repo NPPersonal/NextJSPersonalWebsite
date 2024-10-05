@@ -19,6 +19,7 @@ const getBlogs = async () => {
     metadata: {
       route: "/blogs",
     },
+    children: undefined,
   };
 };
 
@@ -60,6 +61,7 @@ const getAboutMe = async () => {
     metadata: {
       route: "/aboutme",
     },
+    children: undefined,
   };
 };
 
@@ -95,18 +97,23 @@ export default async function NavigationBar() {
   return (
     <nav
       className="sticky z-10 bg-accent top-0 left-0
-    right-0 bottom-0 p-4 flex flex-row items-center shadow-lg"
+    right-0 bottom-0 p-4 flex flex-row justify-center items-center shadow-lg"
     >
       <Link className="cursor-pointer" href="/">
         <HomeIcon className="w-8 h-8" />
       </Link>
-      <div className="grow-[1]" />
+      <div className="grow-0 sm:grow-[1]" />
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem>
-            <Link href={blogData.metadata.route}>
-              <Typography variant="strong">{blogData.name}</Typography>
-            </Link>
+            <NavigationMenuTrigger
+              className="bg-accent"
+              enableChevron={blogData.children ? true : false}
+            >
+              <Link href={blogData.metadata.route}>
+                <Typography variant="strong">{blogData.name}</Typography>
+              </Link>
+            </NavigationMenuTrigger>
           </NavigationMenuItem>
           <NavigationMenuItem>
             <NavigationMenuTrigger
@@ -117,12 +124,13 @@ export default async function NavigationBar() {
             </NavigationMenuTrigger>
             {projectData.children ? (
               <NavigationMenuContent>
-                <ul className="grid gap-6 p-4 lg:grid-cols-[.75fr_1fr]">
+                <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                   {projectData.children.map((item, i) => {
                     return (
                       <Link
                         key={`${item.name}-${i}`}
                         href={item.metadata.route}
+                        className="rounded-lg hover:bg-foreground/10"
                       >
                         <li>
                           <div>
@@ -145,9 +153,14 @@ export default async function NavigationBar() {
             ) : null}
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <Link href={aboutmeData.metadata.route}>
-              <Typography variant="strong">{aboutmeData.name}</Typography>
-            </Link>
+            <NavigationMenuTrigger
+              className="bg-accent"
+              enableChevron={aboutmeData.children ? true : false}
+            >
+              <Link href={aboutmeData.metadata.route}>
+                <Typography variant="strong">{aboutmeData.name}</Typography>
+              </Link>
+            </NavigationMenuTrigger>
           </NavigationMenuItem>
           <NavigationMenuItem>
             <NavigationMenuTrigger
@@ -158,12 +171,13 @@ export default async function NavigationBar() {
             </NavigationMenuTrigger>
             {contactData.children ? (
               <NavigationMenuContent>
-                <ul className="grid gap-6 p-4 lg:grid-cols-[.75fr_1fr]">
+                <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                   {contactData.children.map((item, i) => {
                     return (
                       <Link
                         key={`${item.name}-${i}`}
                         href={item.metadata.route}
+                        className="rounded-lg hover:bg-foreground/10"
                       >
                         <li>
                           <div>
@@ -187,7 +201,7 @@ export default async function NavigationBar() {
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
-      <div className="grow-[1]" />
+      <div className="grow-0 sm:grow-[1]" />
       <ModeSwitcher />
     </nav>
   );
