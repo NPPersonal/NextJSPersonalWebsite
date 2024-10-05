@@ -9,5 +9,21 @@
   "AboutPage": {
     "title": "關於我",
     "home": "回首頁"
+  },
+  "Navigation": {
+    "projects": "Projects",
+    "projects_web": "Web",
+    "projects_mobile": "Mobile",
+    "projects_machine_learning": "Machine Learning",
+    "projects_web_description": "Web App development. React, Next.js",
+    "projects_mobile_description": "Mobile App development. IOS, React Native",
+    "projects_machine_learning_description": "Deep Learning and Machine Learning",
+    "blogs": "Blogs",
+    "aboutme": "About Me",
+    "contacts": "Contacts",
+    "contacts_linkedin": "LinkedIn",
+    "contacts_message_me": "Message Me",
+    "contacts_linkedin_description": "Contact me from LinkedIn",
+    "contacts_message_me_description": "You can send message to me"
   }
 }
