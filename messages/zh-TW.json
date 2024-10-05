@@ -11,19 +11,19 @@
     "home": "回首頁"
   },
   "Navigation": {
-    "projects": "Projects",
-    "projects_web": "Web",
-    "projects_mobile": "Mobile",
-    "projects_machine_learning": "Machine Learning",
-    "projects_web_description": "Web App development. React, Next.js",
-    "projects_mobile_description": "Mobile App development. IOS, React Native",
-    "projects_machine_learning_description": "Deep Learning and Machine Learning",
-    "blogs": "Blogs",
-    "aboutme": "About Me",
-    "contacts": "Contacts",
+    "projects": "專案",
+    "projects_web": "網頁",
+    "projects_mobile": "行動裝置",
+    "projects_machine_learning": "機器學習",
+    "projects_web_description": "網頁應用程式開發. React, Next.js",
+    "projects_mobile_description": "行動裝置應用程式開發. IOS, React Native",
+    "projects_machine_learning_description": "深度學習和機器學習",
+    "blogs": "部落格",
+    "aboutme": "關於我",
+    "contacts": "聯繫我",
     "contacts_linkedin": "LinkedIn",
-    "contacts_message_me": "Message Me",
-    "contacts_linkedin_description": "Contact me from LinkedIn",
-    "contacts_message_me_description": "You can send message to me"
+    "contacts_message_me": "傳信息給我",
+    "contacts_linkedin_description": "到 LinkedIn 跟我聯繫",
+    "contacts_message_me_description": "你可以直接傳信息給我"
   }
 }
