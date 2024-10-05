@@ -4,7 +4,8 @@ import "./globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { unstable_setRequestLocale } from "next-intl/server";
-import ThemeProvider from "@/components/mode-toggle";
+import ThemeProvider from "@/components/theme-provider";
+import NavigationBar from "@/components/navigationbar";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -49,6 +50,7 @@ export default async function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
+            <NavigationBar />
             {children}
           </ThemeProvider>
         </NextIntlClientProvider>
