@@ -9,7 +9,7 @@ import {
 import { Typography } from "./ui/typography";
 import { localeOptions, usePathname, useRouter } from "@/i18n/routing";
 import { useLocale } from "next-intl";
-import { GlobeIcon } from "@radix-ui/react-icons";
+import { GlobeIcon, ArrowRightIcon } from "@radix-ui/react-icons";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface LocaleSwitcherProps
@@ -42,7 +42,10 @@ const LocaleSwitcher = React.forwardRef<
               disabled={option.key === currentLocale}
               onClick={() => handleChangeLocale(option.key)}
             >
-              <Typography variant="strong">{option.optionName}</Typography>
+              <Typography className="flex items-center" variant="strong">
+                {option.key === currentLocale ? <ArrowRightIcon /> : null}
+                {option.optionName}
+              </Typography>
             </DropdownMenuItem>
           );
         })}
