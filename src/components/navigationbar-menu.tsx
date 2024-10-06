@@ -7,85 +7,13 @@ import {
   NavigationMenuTrigger,
 } from "./ui/navigation-menu";
 import { Typography } from "./ui/typography";
-import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/routing";
-
-const getBlogs = async () => {
-  const t = await getTranslations("Navigation");
-  return {
-    name: t("blogs"),
-    metadata: {
-      route: "/blogs",
-    },
-    children: undefined,
-  };
-};
-
-const getProjects = async () => {
-  const t = await getTranslations("Navigation");
-  return {
-    name: t("projects"),
-    metadata: undefined,
-    children: [
-      {
-        name: t("projects_web"),
-        metadata: {
-          route: "/projects/web/",
-          description: t("projects_web_description"),
-        },
-      },
-      {
-        name: t("projects_mobile"),
-        metadata: {
-          route: "/projects/mobile/",
-          description: t("projects_mobile_description"),
-        },
-      },
-      {
-        name: t("projects_machine_learning"),
-        metadata: {
-          route: "/projects/machine-learning/",
-          description: t("projects_machine_learning_description"),
-        },
-      },
-    ],
-  };
-};
-
-const getAboutMe = async () => {
-  const t = await getTranslations("Navigation");
-  return {
-    name: t("aboutme"),
-    metadata: {
-      route: "/aboutme",
-    },
-    children: undefined,
-  };
-};
-
-const getContacts = async () => {
-  const t = await getTranslations("Navigation");
-  return {
-    name: t("contacts"),
-    metadata: undefined,
-    children: [
-      {
-        name: t("contacts_linkedin"),
-        metadata: {
-          route: "https://www.linkedin.com/in/ming-chung-hung-38125a117/",
-          description: t("contacts_linkedin_description"),
-        },
-      },
-      {
-        name: t("contacts_message_me"),
-        metadata: {
-          route: "/contact/message-me/",
-          description: t("contacts_message_me_description"),
-        },
-      },
-    ],
-  };
-};
+import {
+  getAboutMe,
+  getBlogs,
+  getContacts,
+  getProjects,
+} from "@/lib/site-routes";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface NavigationBarMenuProps
@@ -108,7 +36,7 @@ const NavigationBarMenu = React.forwardRef<
             className="bg-accent"
             enableChevron={blogData.children ? true : false}
           >
-            <Link href={blogData.metadata.route}>
+            <Link href={blogData.metadata ? blogData.metadata.route : ""}>
               <Typography variant="strong">{blogData.name}</Typography>
             </Link>
           </NavigationMenuTrigger>
@@ -127,7 +55,7 @@ const NavigationBarMenu = React.forwardRef<
                   return (
                     <Link
                       key={`${item.name}-${i}`}
-                      href={item.metadata.route}
+                      href={item.metadata ? item.metadata.route : ""}
                       className="rounded-lg hover:bg-foreground/10"
                     >
                       <li>
@@ -139,7 +67,7 @@ const NavigationBarMenu = React.forwardRef<
                             className="text-muted-foreground"
                             variant="p"
                           >
-                            {item.metadata.description}
+                            {item.metadata ? item.metadata.description : ""}
                           </Typography>
                         </div>
                       </li>
@@ -155,7 +83,7 @@ const NavigationBarMenu = React.forwardRef<
             className="bg-accent"
             enableChevron={aboutmeData.children ? true : false}
           >
-            <Link href={aboutmeData.metadata.route}>
+            <Link href={aboutmeData.metadata ? aboutmeData.metadata.route : ""}>
               <Typography variant="strong">{aboutmeData.name}</Typography>
             </Link>
           </NavigationMenuTrigger>
