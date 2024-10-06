@@ -10,12 +10,7 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
-import {
-  getAboutMe,
-  getBlogs,
-  getContacts,
-  getProjects,
-} from "@/lib/site-routes";
+import { getRouteCollection } from "@/lib/site-routes";
 import { Link } from "@/i18n/routing";
 import { Typography } from "./ui/typography";
 
@@ -28,11 +23,7 @@ const NavigationBarMenuCompact = React.forwardRef<
   NavigationBarMenuCompactProps
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
 >(async ({ ...props }, ref) => {
-  const blogData = await getBlogs();
-  const projectData = await getProjects();
-  const aboutmeData = await getAboutMe();
-  const contactData = await getContacts();
-  const siteRoutes = [blogData, projectData, aboutmeData, contactData];
+  const siteRoutes = await getRouteCollection();
   return (
     <DropdownMenu {...props}>
       <DropdownMenuTrigger asChild>

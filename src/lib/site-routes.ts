@@ -1,3 +1,4 @@
+"use server";
 import { getTranslations } from "next-intl/server";
 
 export type SiteRouteProps = {
@@ -84,4 +85,12 @@ export const getContacts = async () => {
       },
     ],
   };
+};
+
+export const getRouteCollection = async () => {
+  const blogData = await getBlogs();
+  const projectData = await getProjects();
+  const aboutmeData = await getAboutMe();
+  const contactData = await getContacts();
+  return [blogData, projectData, aboutmeData, contactData];
 };
