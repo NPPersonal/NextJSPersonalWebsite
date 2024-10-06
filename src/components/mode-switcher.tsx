@@ -20,7 +20,7 @@ const motionTransition = {
 };
 
 const ModeSwitcher = React.forwardRef<HTMLDivElement, ModeSwitcherProps>(
-  ({}, ref) => {
+  ({ ...props }, ref) => {
     const [mounted, setMounted] = React.useState(false);
     const { theme, setTheme } = useTheme();
     const handleTheme = () => {
@@ -42,6 +42,7 @@ const ModeSwitcher = React.forwardRef<HTMLDivElement, ModeSwitcherProps>(
         ref={ref}
         className="bg-accent relative w-8 h-8 overflow-hidden cursor-pointer"
         onClick={handleTheme}
+        {...props}
       >
         <FramerMotionWrapper
           className="absolute"

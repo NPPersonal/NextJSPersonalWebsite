@@ -94,13 +94,14 @@ export interface NavigationBarMenuProps
 const NavigationBarMenu = React.forwardRef<
   typeof NavigationMenu,
   NavigationBarMenuProps
->(async () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+>(async ({ ...props }, ref) => {
   const blogData = await getBlogs();
   const projectData = await getProjects();
   const aboutmeData = await getAboutMe();
   const contactData = await getContacts();
   return (
-    <NavigationMenu>
+    <NavigationMenu {...props}>
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuTrigger

@@ -18,7 +18,8 @@ export interface LocaleSwitcherProps
 const LocaleSwitcher = React.forwardRef<
   typeof DropdownMenu,
   LocaleSwitcherProps
->(({ ...props }) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+>(({ ...props }, ref) => {
   const pathname = usePathname();
   const router = useRouter();
   const currentLocale = useLocale();
