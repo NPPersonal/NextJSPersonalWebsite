@@ -22,9 +22,9 @@ const motionTransition = {
 const ModeSwitcher = React.forwardRef<HTMLDivElement, ModeSwitcherProps>(
   ({ ...props }, ref) => {
     const [mounted, setMounted] = React.useState(false);
-    const { theme, setTheme } = useTheme();
+    const { resolvedTheme, setTheme } = useTheme();
     const handleTheme = () => {
-      setTheme(theme === "light" ? "dark" : "light");
+      setTheme(resolvedTheme === "light" ? "dark" : "light");
     };
     // Because we cannot know the theme on the server,
     // many of the values returned from useTheme will be undefined until mounted on the client
@@ -47,7 +47,7 @@ const ModeSwitcher = React.forwardRef<HTMLDivElement, ModeSwitcherProps>(
         <FramerMotionWrapper
           className="absolute"
           initial="hidden"
-          animate={theme === "dark" ? "visible" : "hidden"}
+          animate={resolvedTheme === "dark" ? "visible" : "hidden"}
           transition={motionTransition}
           variants={motionAnimate}
         >
@@ -56,7 +56,7 @@ const ModeSwitcher = React.forwardRef<HTMLDivElement, ModeSwitcherProps>(
         <FramerMotionWrapper
           className="absolute"
           initial="hidden"
-          animate={theme === "light" ? "visible" : "hidden"}
+          animate={resolvedTheme === "light" ? "visible" : "hidden"}
           transition={motionTransition}
           variants={motionAnimate}
         >
