@@ -25,5 +25,11 @@
     "contacts_message_me": "Message Me",
     "contacts_linkedin_description": "Contact me from LinkedIn",
     "contacts_message_me_description": "You can send message to me"
+  },
+  "BlogPage": {
+    "load_blog_data": "Loading blog data ...",
+    "blog_fetch_error": "Somthing went wrong!",
+    "title": "Blogs",
+    "see_more_blogs": "See more"
   }
 }
