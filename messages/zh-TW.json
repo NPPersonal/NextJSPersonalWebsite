@@ -30,6 +30,8 @@
     "load_blog_data": "接收部落格資料 ...",
     "blog_fetch_error": "接收部落格資料失敗",
     "title": "部落格",
-    "see_more_blogs": "看更多"
+    "see_more_blogs": "看更多",
+    "metadata_title": "Blogs",
+    "metadata_description": "This is the blogs section"
   }
 }
