@@ -19,7 +19,7 @@
     "projects_mobile_description": "行動裝置應用程式開發. IOS, React Native",
     "projects_machine_learning_description": "深度學習和機器學習",
     "blogs": "部落格",
-    "aboutme": "About me",
+    "aboutme": "關於我",
     "contacts": "聯繫我",
     "contacts_linkedin": "LinkedIn",
     "contacts_message_me": "傳信息給我",
@@ -27,9 +27,9 @@
     "contacts_message_me_description": "你可以直接傳信息給我"
   },
   "BlogPage": {
-    "load_blog_data": "Loading blog data ...",
-    "blog_fetch_error": "Somthing went wrong!",
-    "title": "Blogs",
-    "see_more_blogs": "See more"
+    "load_blog_data": "接收部落格資料 ...",
+    "blog_fetch_error": "接收部落格資料失敗",
+    "title": "部落格",
+    "see_more_blogs": "看更多"
   }
 }
