@@ -9,11 +9,9 @@ import { getMDX } from "@/lib/mdx";
 import { defaultMDXComponents } from "@/components/mdx-components";
 import DelayRender from "@/components/delay-render";
 import FramerMotionWrapper from "@/components/motion/framer-motion-client";
+import { NextJSPageProps } from "@/types/page-props";
 
-type HomePageProps = {
-  params: { [key: string]: string };
-  searchParams: { [key: string]: string | string[] | undefined };
-};
+type HomePageProps = NextJSPageProps;
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));

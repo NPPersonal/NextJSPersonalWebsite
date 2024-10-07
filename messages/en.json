@@ -30,6 +30,8 @@
     "load_blog_data": "Loading blog data ...",
     "blog_fetch_error": "Somthing went wrong!",
     "title": "Blogs",
-    "see_more_blogs": "See more"
+    "see_more_blogs": "See more",
+    "metadata_title": "Blogs",
+    "metadata_description": "This is the blogs section"
   }
 }
