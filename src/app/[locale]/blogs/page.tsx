@@ -13,8 +13,7 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-export async function generateMetadata({ params: { locale } }: BlogPageProps) {
-  unstable_setRequestLocale(locale);
+export async function generateMetadata() {
   const t = await getTranslations("BlogPage");
   return {
     title: t("metadata_title"),
@@ -22,7 +21,8 @@ export async function generateMetadata({ params: { locale } }: BlogPageProps) {
   };
 }
 
-export default async function BlogPage() {
+export default async function BlogPage({ params: { locale } }: BlogPageProps) {
+  unstable_setRequestLocale(locale);
   const t = await getTranslations("BlogPage");
   return (
     <div className="flex flex-col items-center">

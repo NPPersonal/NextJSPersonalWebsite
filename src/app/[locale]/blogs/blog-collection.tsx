@@ -83,7 +83,7 @@ const BlogCollection = React.forwardRef<HTMLDivElement, BlogCollectionProps>(
                   >
                     <a
                       onClick={() => openLink(item.link)}
-                      className="w-full cursor-pointer hover:scale-110 transition-all duration-75"
+                      className="w-full cursor-pointer hover:z-[1] hover:scale-110 transition-all duration-75"
                     >
                       <BlogCard
                         className="shadow-elvation1"
