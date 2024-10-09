@@ -14,7 +14,7 @@ export interface MDXType {
   content: React.ReactElement<any, string | React.JSXElementConstructor<any>>;
 }
 /**
- * Return metadata about mdx files under directory.
+ * Return metadata and content about mdx files under directory.
  *
  * **mdx file name format: [filename].[locale].mdx**
  * @param path `string` path to directory e.g resources/my-files
@@ -62,6 +62,12 @@ export async function getMDX(
   return Promise.all(filterResults);
 }
 
+/**
+ * Return a list of folder names under a directory
+ *
+ * @param pathDir `string` path to directory
+ * @returns
+ */
 export async function getSubDirectoryNames(pathDir: string) {
   const results = await glob(path.join(pathDir, "/*"), {
     withFileTypes: true,

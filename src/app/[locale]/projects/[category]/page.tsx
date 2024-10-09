@@ -7,12 +7,15 @@ import ProjectCard from "@/components/project-card";
 import { Typography } from "@/components/ui/typography";
 import RenderInView from "@/components/render-in-view";
 import TypeWriter from "@/components/type-writer";
+import path from "node:path";
 
 type ProjectPageProps = NextJSPageProps;
 
+// projects folder under resources directory
+const PATH_TO_PROJECTS = "resources/mdx/projects";
+
 export async function generateStaticParams() {
-  // return routing.locales.map((locale) => ({ locale }));
-  const categories = await getSubDirectoryNames("resources/mdx/projects/");
+  const categories = await getSubDirectoryNames(PATH_TO_PROJECTS);
   const ret = routing.locales
     .map((locale) => {
       return categories.map((category) => {
@@ -47,7 +50,7 @@ function transformMDX(mdxList: Array<MDXType>) {
 export default async function ProjectPage({ params }: ProjectPageProps) {
   unstable_setRequestLocale(params.locale);
   const mdxList = await getMDX(
-    `resources/mdx/projects/${params.category}`,
+    path.join(PATH_TO_PROJECTS, params.category),
     params.locale
   );
   const transformedMDXList = mdxList.length > 0 ? transformMDX(mdxList) : [];
