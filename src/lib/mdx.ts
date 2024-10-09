@@ -61,3 +61,10 @@ export async function getMDX(
 
   return Promise.all(filterResults);
 }
+
+export async function getSubDirectoryNames(pathDir: string) {
+  const results = await glob(path.join(pathDir, "/*"), {
+    withFileTypes: true,
+  });
+  return results.filter((path) => path.isDirectory()).map((path) => path.name);
+}

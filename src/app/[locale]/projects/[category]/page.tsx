@@ -1,5 +1,5 @@
 import { routing } from "@/i18n/routing";
-import { getMDX, MDXType } from "@/lib/mdx";
+import { getMDX, getSubDirectoryNames, MDXType } from "@/lib/mdx";
 import { NextJSPageProps } from "@/types/page-props";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import React from "react";
@@ -10,8 +10,17 @@ import TypeWriter from "@/components/type-writer";
 
 type ProjectPageProps = NextJSPageProps;
 
-export function generateStaticParams() {
-  return routing.locales.map((locale) => ({ locale }));
+export async function generateStaticParams() {
+  // return routing.locales.map((locale) => ({ locale }));
+  const categories = await getSubDirectoryNames("resources/mdx/projects/");
+  const ret = routing.locales
+    .map((locale) => {
+      return categories.map((category) => {
+        return { locale, category };
+      });
+    })
+    .flat();
+  return ret;
 }
 
 export async function generateMetadata() {
@@ -38,12 +47,15 @@ function transformMDX(mdxList: Array<MDXType>) {
 export default async function ProjectPage({ params }: ProjectPageProps) {
   unstable_setRequestLocale(params.locale);
   const mdxList = await getMDX(
-    `resources/mdx/${params.category}`,
+    `resources/mdx/projects/${params.category}`,
     params.locale
   );
-  const transformedMDXList = transformMDX(mdxList);
+  const transformedMDXList = mdxList.length > 0 ? transformMDX(mdxList) : [];
 
-  const titleText = transformedMDXList[0].categoryTitle;
+  const titleText =
+    transformedMDXList.length > 0
+      ? transformedMDXList[0].categoryTitle
+      : "Unknow";
   const titleDuration = titleText.length * 150;
 
   return (
