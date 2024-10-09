@@ -33,5 +33,9 @@
     "see_more_blogs": "看更多",
     "metadata_title": "部落格",
     "metadata_description": "這是部落格的頁面"
+  },
+  "ProjectPage": {
+    "metadata_title": "Projects",
+    "metadata_description": "This is the project section"
   }
 }
