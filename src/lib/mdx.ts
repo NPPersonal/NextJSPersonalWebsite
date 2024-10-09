@@ -5,6 +5,14 @@ import { MDXProvider } from "@mdx-js/react";
 import { readFile } from "fs/promises";
 import { compileMDX } from "next-mdx-remote/rsc";
 
+export interface MDXType {
+  name: string;
+  parent: string | undefined;
+  fullpath: string;
+  frontmatter: Record<string, unknown>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  content: React.ReactElement<any, string | React.JSXElementConstructor<any>>;
+}
 /**
  * Return metadata about mdx files under directory.
  *
@@ -26,7 +34,7 @@ export async function getMDX(
   matchName: string = "",
   encoding: BufferEncoding = "utf-8",
   components?: React.ComponentProps<typeof MDXProvider>["components"]
-) {
+): Promise<Array<MDXType>> {
   const results = await glob(path.join(pathDir, "/**/*.mdx"), {
     withFileTypes: true,
   });

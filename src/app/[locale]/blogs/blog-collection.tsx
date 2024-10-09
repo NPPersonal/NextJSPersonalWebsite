@@ -67,7 +67,7 @@ const BlogCollection = React.forwardRef<HTMLDivElement, BlogCollectionProps>(
     }
     return (
       <div ref={ref} className="flex flex-col items-center" {...props}>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 w-full">
           {items.length === 0
             ? null
             : items.map((item) => {

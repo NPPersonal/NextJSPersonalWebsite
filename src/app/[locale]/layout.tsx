@@ -51,7 +51,7 @@ export default async function RootLayout({
             disableTransitionOnChange
           >
             <NavigationBar />
-            {children}
+            <div className="my-8 mx-4">{children}</div>
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>

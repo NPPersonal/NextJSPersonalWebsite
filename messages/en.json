@@ -33,5 +33,9 @@
     "see_more_blogs": "See more",
     "metadata_title": "Blogs",
     "metadata_description": "This is the blogs section"
+  },
+  "ProjectPage": {
+    "metadata_title": "Projects",
+    "metadata_description": "This is the project section"
   }
 }

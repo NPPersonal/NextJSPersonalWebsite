@@ -24,6 +24,8 @@ export async function generateMetadata() {
 export default async function BlogPage({ params: { locale } }: BlogPageProps) {
   unstable_setRequestLocale(locale);
   const t = await getTranslations("BlogPage");
+  const titleText = t("title");
+  const titleDuration = titleText.length * 150;
   return (
     <div className="flex flex-col items-center">
       <RenderInView
@@ -32,7 +34,7 @@ export default async function BlogPage({ params: { locale } }: BlogPageProps) {
         }}
       >
         <Typography className="mb-8 text-center" variant="h3">
-          <TypeWriter text={t("title")} durationMS={700} />
+          <TypeWriter text={titleText} durationMS={titleDuration} />
         </Typography>
       </RenderInView>
       <BlogCollection />
