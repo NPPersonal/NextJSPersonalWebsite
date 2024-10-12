@@ -2,9 +2,11 @@ import { MDXProvider } from "@mdx-js/react";
 import { Typography } from "./ui/typography";
 import { Link } from "@/i18n/routing";
 
-export const defaultMDXComponents: React.ComponentProps<
+export type DefaultMDXComponentProps = React.ComponentProps<
   typeof MDXProvider
->["components"] = {
+>["components"];
+
+export const defaultMDXComponents: DefaultMDXComponentProps = {
   h3: (props) => (
     <Typography className="text-center" variant="h3" {...props}>
       {props.children}
@@ -21,8 +23,8 @@ export const defaultMDXComponents: React.ComponentProps<
     </Typography>
   ),
   li: (props) => (
-    <Typography className="my-1 block font-semibold text-lg">
-      ➡ {props.children}
+    <Typography className="ml-4 my-1 block font-semibold text-lg">
+      <span>{props.children}</span>
     </Typography>
   ),
   strong: (props) => <Typography variant="strong">{props.children}</Typography>,

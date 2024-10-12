@@ -4,6 +4,8 @@ import path from "path";
 import { MDXProvider } from "@mdx-js/react";
 import { readFile } from "fs/promises";
 import { compileMDX } from "next-mdx-remote/rsc";
+import remarkGfm from "remark-gfm";
+import remarkEmoji from "remark-emoji";
 
 export interface MDXType {
   name: string;
@@ -46,7 +48,13 @@ export async function getMDX(
       const mdxRaw = await readFile(path.fullpath(), { encoding: encoding });
       const { content, frontmatter } = await compileMDX({
         source: mdxRaw,
-        options: { parseFrontmatter: true },
+        options: {
+          parseFrontmatter: true,
+          mdxOptions: {
+            remarkPlugins: [remarkGfm, remarkEmoji],
+            format: "mdx",
+          },
+        },
         components: components,
       });
 
@@ -60,6 +68,19 @@ export async function getMDX(
     });
 
   return Promise.all(filterResults);
+}
+
+export async function getMDXBy(
+  slug: string,
+  pathDir: string,
+  locale: string,
+  components?: React.ComponentProps<typeof MDXProvider>["components"]
+) {
+  const results = await getMDX(pathDir, locale, "", "utf-8", components);
+  const filteredResults = results.filter((mdx) => {
+    return mdx.frontmatter.slug === slug;
+  });
+  return filteredResults;
 }
 
 /**

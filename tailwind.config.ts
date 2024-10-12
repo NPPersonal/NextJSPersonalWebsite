@@ -54,6 +54,9 @@ const config: Config = {
           "5": "hsl(var(--chart-5))",
         },
       },
+      gridTemplateColumns: {
+        fluid: "repeat(auto-fit, minmax(10rem, 1fr))",
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",

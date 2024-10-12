@@ -4,24 +4,11 @@ import { Typography } from "@/components/ui/typography";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import RenderInView from "@/components/render-in-view";
 import TypeWriter from "@/components/type-writer";
-import { routing } from "@/i18n/routing";
 import { NextJSPageProps } from "@/types/page-props";
 
-type BlogPageProps = NextJSPageProps;
-
-export function generateStaticParams() {
-  return routing.locales.map((locale) => ({ locale }));
-}
-
-export async function generateMetadata() {
-  const t = await getTranslations("BlogPage");
-  return {
-    title: t("metadata_title"),
-    description: t("metadata_description"),
-  };
-}
-
-export default async function BlogPage({ params: { locale } }: BlogPageProps) {
+export default async function BlogPage({
+  params: { locale },
+}: NextJSPageProps) {
   unstable_setRequestLocale(locale);
   const t = await getTranslations("BlogPage");
   const titleText = t("title");

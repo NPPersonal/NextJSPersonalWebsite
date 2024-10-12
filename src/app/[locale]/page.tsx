@@ -1,5 +1,4 @@
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
-import { routing } from "@/i18n/routing";
 import TypeWriter from "@/components/type-writer";
 import { Typography } from "@/components/ui/typography";
 import RenderInView from "@/components/render-in-view";
@@ -12,18 +11,6 @@ import FramerMotionWrapper from "@/components/motion/framer-motion-client";
 import { NextJSPageProps } from "@/types/page-props";
 
 type HomePageProps = NextJSPageProps;
-
-export function generateStaticParams() {
-  return routing.locales.map((locale) => ({ locale }));
-}
-
-export async function generateMetadata() {
-  const t = await getTranslations("HomePage");
-  return {
-    title: t("metadata_title"),
-    description: t("metadata_description"),
-  };
-}
 
 export default async function HomePage({ params: { locale } }: HomePageProps) {
   unstable_setRequestLocale(locale);
