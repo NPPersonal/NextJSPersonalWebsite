@@ -3,12 +3,11 @@ import { NextJSPageProps } from "@/types/page-props";
 import React from "react";
 import ProjectCard from "@/components/project-card";
 import { Typography } from "@/components/ui/typography";
-import RenderInView from "@/components/render-in-view";
-import TypeWriter from "@/components/type-writer";
 import path from "node:path";
 import { PATH_TO_PROJECTS } from "@/constant";
 import { Link } from "@/i18n/routing";
 import { unstable_setRequestLocale } from "next-intl/server";
+import PageTitle from "@/components/page-title";
 
 type ProjectPageProps = NextJSPageProps;
 
@@ -36,20 +35,11 @@ export default async function ProjectPage({
   const titleText =
     transformedMDXList.length > 0
       ? transformedMDXList[0].categoryTitle
-      : "Unknow";
-  const titleDuration = titleText.length * 150;
+      : "Unknown";
 
   return (
     <div className="flex flex-col items-center">
-      <RenderInView
-        options={{
-          triggerOnce: true,
-        }}
-      >
-        <Typography className="mb-8 text-center" variant="h3">
-          <TypeWriter text={titleText} durationMS={titleDuration} />
-        </Typography>
-      </RenderInView>
+      <PageTitle title={titleText} variant="h3" />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-fluid gap-3 w-full">
         {transformedMDXList.map((mdx, i) => {
           return (

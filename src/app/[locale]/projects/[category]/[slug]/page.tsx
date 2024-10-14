@@ -3,8 +3,7 @@ import {
   DefaultMDXComponentProps,
   defaultMDXComponents,
 } from "@/components/mdx-components";
-import RenderInView from "@/components/render-in-view";
-import TypeWriter from "@/components/type-writer";
+import PageTitle from "@/components/page-title";
 import {
   Carousel,
   CarouselContent,
@@ -45,20 +44,11 @@ export default async function SlugPage({
     mdxComponents
   );
   const mdx = results.length > 0 ? results[0] : undefined;
-  const title = mdx ? (mdx.frontmatter.title as string) : "";
-  const titleDuration = title.length * 150;
+  const titleText = mdx ? (mdx.frontmatter.title as string) : "Unknown";
 
   return (
     <div className="flex flex-col items-center">
-      <RenderInView
-        options={{
-          triggerOnce: true,
-        }}
-      >
-        <Typography className="mb-8 text-center" variant="h3">
-          <TypeWriter text={title} durationMS={titleDuration} />
-        </Typography>
-      </RenderInView>
+      <PageTitle title={titleText} variant="h3" />
       <Carousel className="mb-8 w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg">
         <CarouselContent>
           {mdx
