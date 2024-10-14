@@ -29,7 +29,9 @@
     "contacts_linkedin": "LinkedIn",
     "contacts_message_me": "Message Me",
     "contacts_linkedin_description": "Contact me from LinkedIn",
-    "contacts_message_me_description": "You can send message to me"
+    "contacts_message_me_description": "You can send message to me",
+    "projects_github": "GitHub",
+    "projects_github_description": "GitHub where you can find my personal projects"
   },
   "BlogPage": {
     "load_blog_data": "Loading blog data ...",

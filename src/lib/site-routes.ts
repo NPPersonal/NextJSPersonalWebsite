@@ -48,6 +48,13 @@ export const getProjects: () => Promise<SiteRouteProps> = async () => {
           description: t("projects_machine_learning_description"),
         },
       },
+      {
+        name: t("projects_github"),
+        metadata: {
+          route: "https://github.com/tomneo2004",
+          description: t("projects_github_description"),
+        },
+      },
     ],
   };
 };
