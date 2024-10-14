@@ -8,7 +8,12 @@
   },
   "AboutPage": {
     "title": "關於我",
-    "home": "回首頁"
+    "home": "回首頁",
+    "full_name": "Ming Chun Hung",
+    "location": "Taichung, Taiwian",
+    "languages": "Mandarin, English",
+    "metadata_title": "About Me",
+    "metadata_description": "This is the page section about my personal information"
   },
   "Navigation": {
     "projects": "專案",
