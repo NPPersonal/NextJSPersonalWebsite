@@ -4,16 +4,16 @@
     "subtitle": "這是我的個人網站",
     "description": "主頁的介紹<br></br>不錯吧!",
     "metadata_title": "主頁",
-    "metadata_description": "洪銘駿的個人網站, 使用Next.js"
+    "metadata_description": "這是我的個人網站, 這個個人網站使用NextJS建構開發"
   },
   "AboutPage": {
     "title": "關於我",
     "home": "回首頁",
-    "full_name": "Ming Chun Hung",
-    "location": "Taichung, Taiwian",
-    "languages": "Mandarin, English",
-    "metadata_title": "About Me",
-    "metadata_description": "This is the page section about my personal information"
+    "full_name": "洪銘駿",
+    "location": "台中, 台灣",
+    "languages": "中文, 英文",
+    "metadata_title": "關於我",
+    "metadata_description": "這個頁面是關於我個人的資訊, 在這頁面裡可以找到跟我個人相關的資料"
   },
   "Navigation": {
     "projects": "專案",
@@ -37,10 +37,10 @@
     "title": "部落格",
     "see_more_blogs": "看更多",
     "metadata_title": "部落格",
-    "metadata_description": "這是部落格的頁面"
+    "metadata_description": "這是我的部落格的頁面, 所有部落格文章是在Medium裡編輯撰寫"
   },
   "ProjectPage": {
     "metadata_title": "專案",
-    "metadata_description": "這是專案頁面"
+    "metadata_description": "這是我個人專案頁面, 裡面包涵做過和學習實做的專案"
   }
 }
