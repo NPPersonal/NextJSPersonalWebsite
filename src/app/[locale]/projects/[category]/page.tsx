@@ -7,7 +7,7 @@ import path from "node:path";
 import { PATH_TO_PROJECTS } from "@/constant";
 import { Link } from "@/i18n/routing";
 import { unstable_setRequestLocale } from "next-intl/server";
-import PageTitle from "@/components/page-title";
+import InViewTypeWriter from "@/components/in-view-type-writer";
 
 type ProjectPageProps = NextJSPageProps;
 
@@ -39,7 +39,7 @@ export default async function ProjectPage({
 
   return (
     <div className="flex flex-col items-center">
-      <PageTitle title={titleText} variant="h3" />
+      <InViewTypeWriter className=" mb-8 text-center" title={titleText} variant="h3" />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-fluid gap-3 w-full">
         {transformedMDXList.map((mdx, i) => {
           return (

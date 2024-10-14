@@ -3,7 +3,7 @@ import {
   DefaultMDXComponentProps,
   defaultMDXComponents,
 } from "@/components/mdx-components";
-import PageTitle from "@/components/page-title";
+import InViewTypeWriter from "@/components/in-view-type-writer";
 import {
   Carousel,
   CarouselContent,
@@ -48,7 +48,11 @@ export default async function SlugPage({
 
   return (
     <div className="flex flex-col items-center">
-      <PageTitle title={titleText} variant="h3" />
+      <InViewTypeWriter
+        className=" mb-8 text-center"
+        title={titleText}
+        variant="h3"
+      />
       <Carousel className="mb-8 w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg">
         <CarouselContent>
           {mdx

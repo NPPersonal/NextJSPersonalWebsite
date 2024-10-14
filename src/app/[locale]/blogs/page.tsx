@@ -2,7 +2,7 @@ import React from "react";
 import BlogCollection from "./blog-collection";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import { NextJSPageProps } from "@/types/page-props";
-import PageTitle from "@/components/page-title";
+import InViewTypeWriter from "@/components/in-view-type-writer";
 
 export default async function BlogPage({
   params: { locale },
@@ -12,7 +12,11 @@ export default async function BlogPage({
   const titleText = t("title");
   return (
     <div className="flex flex-col items-center">
-      <PageTitle title={titleText} variant="h3" />
+      <InViewTypeWriter
+        className=" mb-8 text-center"
+        title={titleText}
+        variant="h3"
+      />
       <BlogCollection />
     </div>
   );

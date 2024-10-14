@@ -57,7 +57,7 @@ export const getAboutMe: () => Promise<SiteRouteProps> = async () => {
   return {
     name: t("aboutme"),
     metadata: {
-      route: "/aboutme",
+      route: "/about",
     },
     children: undefined,
   };
