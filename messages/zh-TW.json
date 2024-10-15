@@ -65,7 +65,7 @@
     "from_submit_fail": "信息無法傳送請再試一次",
     "from_submit_successful": "信息成功送出",
     "form_or": "或者",
-    "metadata_title": "Message me",
-    "metadata_description": "You can send me some message straight away and we can get in contact"
+    "metadata_title": "傳信息給我",
+    "metadata_description": "在這裡你可以直接傳信息並且聯繫我"
   }
 }
