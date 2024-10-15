@@ -64,6 +64,8 @@
     "form_preparing": "Preparing form ...",
     "from_submit_fail": "Unable to send the message. Please try again",
     "from_submit_successful": "The message has been sent",
-    "form_or": "OR"
+    "form_or": "OR",
+    "metadata_title": "Message me",
+    "metadata_description": "You can send me some message straight away and we can get in contact"
   }
 }
