@@ -63,6 +63,7 @@
     "form_recaptcha_error": "Something went wrong",
     "form_preparing": "Preparing form ...",
     "from_submit_fail": "Unable to send the message. Please try again",
-    "from_submit_successful": "The message has been sent"
+    "from_submit_successful": "The message has been sent",
+    "form_or": "OR"
   }
 }

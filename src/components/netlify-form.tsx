@@ -22,7 +22,7 @@ import { toast } from "sonner";
 import { PaperPlaneIcon } from "@radix-ui/react-icons";
 import { Typography } from "./ui/typography";
 
-export interface NetlifyFormProps {
+export interface NetlifyFormProps extends React.ComponentProps<"form"> {
   reCAPTCHALocale?: string;
 }
 
@@ -32,9 +32,9 @@ interface FormState {
   sending: boolean;
 }
 
-const NetlifyForm = React.forwardRef<typeof Form, NetlifyFormProps>(
+const NetlifyForm = React.forwardRef<HTMLFormElement, NetlifyFormProps>(
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  ({ reCAPTCHALocale = "en" }, ref) => {
+  ({ reCAPTCHALocale = "en", ...props }, ref) => {
     const t = useTranslations("MessageMe");
     const [reCAPTCHAKey, setReCAPTCHAKey] = React.useState<string | null>(null);
     const [formState, setFormState] = React.useState<FormState>({
@@ -202,7 +202,7 @@ const NetlifyForm = React.forwardRef<typeof Form, NetlifyFormProps>(
     return (
       <React.Fragment>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)}>
+          <form onSubmit={form.handleSubmit(onSubmit)} {...props}>
             <FormField
               control={form.control}
               name="name"
@@ -290,7 +290,7 @@ const NetlifyForm = React.forwardRef<typeof Form, NetlifyFormProps>(
             </div>
           </form>
         </Form>
-        <Toaster richColors />
+        <Toaster richColors position="bottom-center" />
       </React.Fragment>
     );
   }
