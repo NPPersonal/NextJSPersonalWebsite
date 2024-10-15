@@ -6,7 +6,7 @@ import { Typography } from "@/components/ui/typography";
 import path from "node:path";
 import { PATH_TO_PROJECTS } from "@/constant";
 import { Link } from "@/i18n/routing";
-import { unstable_setRequestLocale } from "next-intl/server";
+import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import InViewTypeWriter from "@/components/in-view-type-writer";
 
 type ProjectPageProps = NextJSPageProps;
@@ -23,6 +23,14 @@ function transformMDX(mdxList: Array<MDXType>) {
       previewImageID: mdx.frontmatter.preview_img_id as string,
     };
   });
+}
+
+export async function generateMetadata() {
+  const t = await getTranslations("ProjectPage");
+  return {
+    title: t("metadata_title"),
+    description: t("metadata_description"),
+  };
 }
 
 export default async function ProjectPage({

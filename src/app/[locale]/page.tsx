@@ -12,6 +12,14 @@ import { NextJSPageProps } from "@/types/page-props";
 
 type HomePageProps = NextJSPageProps;
 
+export async function generateMetadata() {
+  const t = await getTranslations("HomePage");
+  return {
+    title: t("metadata_title"),
+    description: t("metadata_description"),
+  };
+}
+
 export default async function HomePage({ params: { locale } }: HomePageProps) {
   unstable_setRequestLocale(locale);
   const t = await getTranslations("HomePage");

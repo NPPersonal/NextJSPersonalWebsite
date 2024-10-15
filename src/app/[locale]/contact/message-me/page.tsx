@@ -7,6 +7,14 @@ import { EnvelopeClosedIcon } from "@radix-ui/react-icons";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import React from "react";
 
+export async function generateMetadata() {
+  const t = await getTranslations("MessageMe");
+  return {
+    title: t("metadata_title"),
+    description: t("metadata_description"),
+  };
+}
+
 export default async function MessageMePage({
   params: { locale },
 }: NextJSPageProps) {

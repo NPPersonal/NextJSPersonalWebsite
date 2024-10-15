@@ -33,6 +33,21 @@ const mdxComponents: DefaultMDXComponentProps = {
   center: (props) => <div className="text-center">{props.children}</div>,
 };
 
+export async function generateMetadata({
+  params: { locale, category, slug },
+}: NextJSPageProps) {
+  const results = await getMDXBy(
+    slug,
+    path.join(PATH_TO_PROJECTS, category),
+    locale
+  );
+  const mdx = results.length > 0 ? results[0] : undefined;
+  return {
+    title: mdx ? mdx.frontmatter.title : slug,
+    description: mdx ? mdx.frontmatter.description : "",
+  };
+}
+
 export default async function SlugPage({
   params: { locale, category, slug },
 }: SlugPageProps) {

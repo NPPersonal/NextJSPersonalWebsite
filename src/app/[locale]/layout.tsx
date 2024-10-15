@@ -1,7 +1,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages, getTranslations } from "next-intl/server";
+import { getMessages } from "next-intl/server";
 import { unstable_setRequestLocale } from "next-intl/server";
 import ThemeProvider from "@/components/theme-provider";
 import NavigationBar from "@/components/navigationbar";
@@ -18,14 +18,6 @@ const geistMono = localFont({
   variable: "--font-geist-mono",
   weight: "100 900",
 });
-
-export async function generateMetadata() {
-  const t = await getTranslations("HomePage");
-  return {
-    title: t("metadata_title"),
-    description: t("metadata_description"),
-  };
-}
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));

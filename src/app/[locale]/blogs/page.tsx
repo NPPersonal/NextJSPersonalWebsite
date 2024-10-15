@@ -4,6 +4,14 @@ import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import { NextJSPageProps } from "@/types/page-props";
 import InViewTypeWriter from "@/components/in-view-type-writer";
 
+export async function generateMetadata() {
+  const t = await getTranslations("BlogPage");
+  return {
+    title: t("metadata_title"),
+    description: t("metadata_description"),
+  };
+}
+
 export default async function BlogPage({
   params: { locale },
 }: NextJSPageProps) {
