@@ -7,6 +7,7 @@ import ThemeProvider from "@/components/theme-provider";
 import NavigationBar from "@/components/navigationbar";
 import { routing } from "@/i18n/routing";
 import { NextJSLayoutProps } from "@/types/page-props";
+import Footer from "@/components/footer";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -49,6 +50,7 @@ export default async function RootLayout({
           >
             <NavigationBar />
             <div className="my-8 mx-4">{children}</div>
+            <Footer className="mx-8 border-t-2 ring-foreground border-foreground flex justify-evenly" />
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>
