@@ -50,7 +50,7 @@ export default async function RootLayout({
           >
             <NavigationBar />
             <div className="my-8 mx-4">{children}</div>
-            <Footer className="mx-8 border-t-2 ring-foreground border-foreground flex justify-evenly" />
+            <Footer />
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>
