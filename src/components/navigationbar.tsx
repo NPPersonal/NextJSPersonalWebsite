@@ -17,6 +17,7 @@ export default async function NavigationBar() {
   const projectData = await getProjects();
   const aboutmeData = await getAboutMe();
   const contactData = await getContacts();
+  const menuCollection = [blogData, projectData, aboutmeData, contactData];
   return (
     <nav
       className="sticky z-10 bg-accent top-0 left-0
@@ -37,7 +38,7 @@ export default async function NavigationBar() {
         />
       </div>
       <div className="block sm:hidden">
-        <NavigationBarMenuCompact />
+        <NavigationBarMenuCompact siteRoutes={menuCollection} />
       </div>
       <div className="grow-[1]" />
       <div className="pr-4">

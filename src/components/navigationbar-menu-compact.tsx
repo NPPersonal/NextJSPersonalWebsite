@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import {
   DropdownMenu,
@@ -10,24 +11,32 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
-import { getRouteCollection } from "@/lib/site-routes";
+import { SiteRouteProps } from "@/lib/site-routes";
 import { Link } from "@/i18n/routing";
 import { Typography } from "./ui/typography";
+import FramerMotionWrapper from "./motion/framer-motion-client";
 
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface NavigationBarMenuCompactProps
-  extends React.ComponentProps<typeof DropdownMenu> {}
+  extends React.ComponentPropsWithoutRef<typeof DropdownMenu> {
+  siteRoutes: Array<SiteRouteProps>;
+}
 
 const NavigationBarMenuCompact = React.forwardRef<
-  typeof DropdownMenu,
+  React.ElementRef<typeof DropdownMenu>,
   NavigationBarMenuCompactProps
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
->(async ({ ...props }, ref) => {
-  const siteRoutes = await getRouteCollection();
+>(({ siteRoutes, ...props }, ref) => {
+  const [open, setOpen] = React.useState<boolean>(false);
   return (
-    <DropdownMenu {...props}>
+    <DropdownMenu
+      open={open}
+      onOpenChange={(value: boolean) => setOpen(value)}
+      {...props}
+    >
       <DropdownMenuTrigger asChild>
-        <HamburgerMenuIcon className="w-8 h-8 cursor-pointer" />
+        <FramerMotionWrapper animate={{ rotate: open ? 90 : 0 }}>
+          <HamburgerMenuIcon className="w-8 h-8 cursor-pointer" />
+        </FramerMotionWrapper>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         {siteRoutes.map((data, i) => {
