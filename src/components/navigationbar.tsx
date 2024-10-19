@@ -5,8 +5,18 @@ import { Link } from "@/i18n/routing";
 import LocaleSwitcher from "./locale-switcher";
 import NavigationBarMenu from "./navigationbar-menu";
 import NavigationBarMenuCompact from "./navigationbar-menu-compact";
+import {
+  getAboutMe,
+  getBlogs,
+  getContacts,
+  getProjects,
+} from "@/lib/site-routes";
 
-export default function NavigationBar() {
+export default async function NavigationBar() {
+  const blogData = await getBlogs();
+  const projectData = await getProjects();
+  const aboutmeData = await getAboutMe();
+  const contactData = await getContacts();
   return (
     <nav
       className="sticky z-10 bg-accent top-0 left-0
@@ -19,7 +29,12 @@ export default function NavigationBar() {
       </div>
       <div className="grow-0 sm:grow-[1]" />
       <div className="hidden sm:block">
-        <NavigationBarMenu />
+        <NavigationBarMenu
+          blogData={blogData}
+          projectData={projectData}
+          aboutmeData={aboutmeData}
+          contactData={contactData}
+        />
       </div>
       <div className="block sm:hidden">
         <NavigationBarMenuCompact />
