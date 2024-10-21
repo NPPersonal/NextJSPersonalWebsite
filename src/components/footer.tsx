@@ -30,6 +30,7 @@ const Footer = React.forwardRef<HTMLElement, FooterProps>(
           className="m-4 w-16 h-16 xl:w-36 xl:h-36"
           src={logoImage}
           alt="logo"
+          priority
         />
         <div className="grow-[1] mt-4 flex flex-col sm:flex-row sm:items-start justify-evenly">
           <div className="mb-4 sm:mb-0">

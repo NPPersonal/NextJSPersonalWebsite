@@ -1,5 +1,5 @@
 import React from "react";
-import { HomeIcon } from "@radix-ui/react-icons";
+// import { HomeIcon } from "@radix-ui/react-icons";
 import ModeSwitcher from "./mode-switcher";
 import { Link } from "@/i18n/routing";
 import LocaleSwitcher from "./locale-switcher";
@@ -11,6 +11,7 @@ import {
   getContacts,
   getProjects,
 } from "@/lib/site-routes";
+import Logo from "./motion/logo";
 
 export default async function NavigationBar() {
   const blogData = await getBlogs();
@@ -25,7 +26,12 @@ export default async function NavigationBar() {
     >
       <div className="pl-4 pr-4 sm:pr-0">
         <Link className="cursor-pointer" href="/">
-          <HomeIcon className="w-8 h-8" />
+          {/* <HomeIcon className="w-8 h-8" /> */}
+          <Logo
+            className="w-8 h-8"
+            strokeWidth={6}
+            animTransition={{ repeatDelay: 5 }}
+          />
         </Link>
       </div>
       <div className="grow-0 sm:grow-[1]" />
