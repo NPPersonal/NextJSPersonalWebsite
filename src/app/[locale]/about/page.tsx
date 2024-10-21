@@ -51,7 +51,7 @@ export default async function About({ params: { locale } }: NextJSPageProps) {
         className="flex justify-center items-center"
         publicImageId="personal-web-image-assets/web-assets/profile"
         imageStyle={{ width: 250 }}
-        advanceImageClassName="rounded-lg shadow-elvation1"
+        advanceImageClassName="rounded-lg shadow-elvation1 dark:shadow-none dark:border-2 dark:rounded-md dark:border-foreground"
       />
       <InViewTypeWriter
         className="mt-4 mb-2 text-center"

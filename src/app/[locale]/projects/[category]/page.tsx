@@ -47,7 +47,11 @@ export default async function ProjectPage({
 
   return (
     <div className="flex flex-col items-center">
-      <InViewTypeWriter className=" mb-8 text-center" title={titleText} variant="h3" />
+      <InViewTypeWriter
+        className=" mb-8 text-center"
+        title={titleText}
+        variant="h3"
+      />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-fluid gap-3 w-full">
         {transformedMDXList.map((mdx, i) => {
           return (
@@ -57,7 +61,7 @@ export default async function ProjectPage({
             >
               <Link href={`${category}/${mdx.slug}`}>
                 <ProjectCard
-                  className="w-full sm:w-[350px] lg:w-[330px] xl:w-[410px] 2xl:w-[300px]"
+                  className="w-full sm:w-[350px] lg:w-[330px] xl:w-[410px] 2xl:w-[300px] cursor-pointer hover:z-[1] hover:scale-110 transition-all duration-75"
                   name={mdx.title}
                   category={mdx.category}
                   description={

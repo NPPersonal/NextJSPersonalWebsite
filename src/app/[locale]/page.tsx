@@ -75,7 +75,7 @@ export default async function HomePage({ params: { locale } }: HomePageProps) {
       >
         <div className="flex flex-col justify-center items-center px-4">
           <Image
-            className="m-8 rounded-lg shadow-elvation1"
+            className="m-8 rounded-lg shadow-elvation1 dark:shadow-none dark:border-2 dark:rounded-md dark:border-foreground"
             src={landingImage}
             priority
             alt="landing"
