@@ -1,5 +1,4 @@
 import React from "react";
-// import { HomeIcon } from "@radix-ui/react-icons";
 import ModeSwitcher from "./mode-switcher";
 import { Link } from "@/i18n/routing";
 import LocaleSwitcher from "./locale-switcher";
@@ -26,7 +25,6 @@ export default async function NavigationBar() {
     >
       <div className="pl-4 pr-4 sm:pr-0">
         <Link className="cursor-pointer" href="/">
-          {/* <HomeIcon className="w-8 h-8" /> */}
           <Logo
             className="w-8 h-8"
             strokeWidth={6}
