@@ -11,6 +11,7 @@ import {
   getProjects,
 } from "@/lib/site-routes";
 import Logo from "./motion/logo";
+import NavigationBarTool from "./navigationbar-tool";
 
 export default async function NavigationBar() {
   const blogData = await getBlogs();
@@ -19,9 +20,9 @@ export default async function NavigationBar() {
   const contactData = await getContacts();
   const menuCollection = [blogData, projectData, aboutmeData, contactData];
   return (
-    <nav
-      className="sticky z-10 bg-accent top-0 left-0
-    right-0 bottom-0 py-4 flex flex-row items-center shadow-lg"
+    <NavigationBarTool
+      className="sticky z-10 top-0 left-0
+    right-0 bottom-0 py-4 flex flex-row items-center"
     >
       <div className="pl-4 pr-4 sm:pr-0">
         <Link className="cursor-pointer" href="/">
@@ -51,6 +52,6 @@ export default async function NavigationBar() {
       <div className="pr-4">
         <ModeSwitcher />
       </div>
-    </nav>
+    </NavigationBarTool>
   );
 }

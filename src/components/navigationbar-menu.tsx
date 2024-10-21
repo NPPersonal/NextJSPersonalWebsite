@@ -34,7 +34,7 @@ const NavigationBarMenu = React.forwardRef<
       <NavigationMenuList>
         <NavigationMenuItem value="blog">
           <NavigationMenuTrigger
-            className="bg-accent"
+            className="bg-inherit"
             enableChevron={blogData.children ? true : false}
           >
             <Link
@@ -47,7 +47,7 @@ const NavigationBarMenu = React.forwardRef<
         </NavigationMenuItem>
         <NavigationMenuItem value="projects">
           <NavigationMenuTrigger
-            className="bg-accent"
+            className="bg-inherit"
             enableChevron={projectData.children ? true : false}
             onPointerMove={(e) => e.preventDefault()}
             onPointerLeave={(e) => e.preventDefault()}
@@ -90,7 +90,7 @@ const NavigationBarMenu = React.forwardRef<
         </NavigationMenuItem>
         <NavigationMenuItem value="about">
           <NavigationMenuTrigger
-            className="bg-accent"
+            className="bg-inherit"
             enableChevron={aboutmeData.children ? true : false}
           >
             <Link
@@ -103,7 +103,7 @@ const NavigationBarMenu = React.forwardRef<
         </NavigationMenuItem>
         <NavigationMenuItem value="contact">
           <NavigationMenuTrigger
-            className="bg-accent"
+            className="bg-inherit"
             enableChevron={contactData.children ? true : false}
             onPointerMove={(e) => e.preventDefault()}
             onPointerLeave={(e) => e.preventDefault()}

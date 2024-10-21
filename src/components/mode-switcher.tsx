@@ -40,7 +40,7 @@ const ModeSwitcher = React.forwardRef<HTMLDivElement, ModeSwitcherProps>(
     return (
       <div
         ref={ref}
-        className="bg-accent relative w-8 h-8 overflow-hidden cursor-pointer"
+        className="relative w-8 h-8 overflow-hidden cursor-pointer"
         onClick={handleTheme}
         {...props}
       >
