@@ -4,10 +4,11 @@ This is a personal website and porting from [Gatesby](https://github.com/NPPerso
 
 ## Framework
 
-- **[Next.js](https://nextjs.org)**: Core
+- **[NextJS](https://nextjs.org)**: Core
 - **[next-intl](https://next-intl-docs.vercel.app/)**: Localization
+- **[react-google-recaptcha][https://www.npmjs.com/package/react-google-recaptcha]**: 3rd party for preventing spam while submitting form
 
-### NextJS
+### [NextJS](https://nextjs.org)
 
 Features that are enabled
 
@@ -16,7 +17,7 @@ Features that are enabled
 - Typescript
 - Eslint
 
-### next-intl
+### [next-intl](https://next-intl-docs.vercel.app/)
 
 Following are used for integration and workflow
 
@@ -24,6 +25,16 @@ Following are used for integration and workflow
 - [Crowdin](https://next-intl-docs.vercel.app/docs/workflows/localization-management): Decouple locaization from project
 - [Sherlock](https://next-intl-docs.vercel.app/docs/workflows/vscode-integration#sherlock): Translation message extraction
 - [Consistent usage of navigation APIs](https://next-intl-docs.vercel.app/docs/workflows/linting#consistent-usage-of-navigation-apis): Make sure developer use next-intl navigation APIs. Developers will be prompted to import from @/i18n/routing when they try to import navigation APIs from Next.js
+
+### [react-google-recaptcha][https://www.npmjs.com/package/react-google-recaptcha]
+
+To integrate this 3rd party. Go to [here](https://www.google.com/recaptcha/admin) for signing up a new key.
+
+1. Add site key to file .env.local with name **RECAPTCHA_KEY**
+2. Follow the usage or example from 3rd party library
+
+⚠️ For local development use you can add localhost to the domain list in Google RECAPTCHA admin console.
+⚠️ Don't expose this site key. For production it is better to add site key in server environment during deployment.
 
 ## Version control branch
 

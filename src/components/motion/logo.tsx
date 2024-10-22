@@ -51,16 +51,17 @@ export default function Logo({
           transition={{ ...transition, ...animTransition }}
         />
         <motion.path
-          className="fill-background"
+          // className="fill-background"
           d="M 28.842255,20.676804 48.548124,84.315078 C 48.364229,59.63207 60.485012,44.43075 93.348712,48.906339 Z"
           variants={icon}
           initial="out"
           animate="in"
           strokeWidth={strokeWidth}
+          fill="none"
           transition={{ ...transition, ...animTransition }}
         />
         <motion.circle
-          className="fill-background"
+          // className="fill-background"
           cx="87.455132"
           cy="87.601944"
           r="27.635511"

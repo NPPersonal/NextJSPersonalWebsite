@@ -15,7 +15,7 @@ const NavigationBarTool = React.forwardRef<HTMLElement, NavigationBarToolProps>(
     const bgColor =
       scrollPosition.top === 0
         ? "bg-background shadow-none"
-        : "bg-accent shadow-lg";
+        : "bg-navigation shadow-lg";
     const cls = cn(bgColor, className);
     return (
       <nav ref={ref} className={cls} {...props}>

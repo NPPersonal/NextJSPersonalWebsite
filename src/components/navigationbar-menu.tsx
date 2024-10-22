@@ -34,8 +34,10 @@ const NavigationBarMenu = React.forwardRef<
       <NavigationMenuList>
         <NavigationMenuItem value="blog">
           <NavigationMenuTrigger
-            className="bg-inherit"
+            className="bg-inherit data-[state=closed]"
             enableChevron={blogData.children ? true : false}
+            onPointerMove={(e) => e.preventDefault()}
+            onPointerLeave={(e) => e.preventDefault()}
           >
             <Link
               href={blogData.metadata ? blogData.metadata.route : ""}
@@ -90,8 +92,10 @@ const NavigationBarMenu = React.forwardRef<
         </NavigationMenuItem>
         <NavigationMenuItem value="about">
           <NavigationMenuTrigger
-            className="bg-inherit"
+            className="bg-inherit data-[state=closed]"
             enableChevron={aboutmeData.children ? true : false}
+            onPointerMove={(e) => e.preventDefault()}
+            onPointerLeave={(e) => e.preventDefault()}
           >
             <Link
               href={aboutmeData.metadata ? aboutmeData.metadata.route : ""}

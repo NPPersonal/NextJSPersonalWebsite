@@ -19,6 +19,7 @@ const config: Config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        navigation: "hsl(var(--navigation-bar))",
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
@@ -63,7 +64,7 @@ const config: Config = {
         sm: "calc(var(--radius) - 4px)",
       },
       boxShadow: {
-        elvation1: "0 5px 20px 0px var(--shadow)",
+        elvation1: "0 3px 10px 0px var(--shadow)",
       },
       animation: {
         "flash-caret": "flash-quick 0.7s linear infinite",
