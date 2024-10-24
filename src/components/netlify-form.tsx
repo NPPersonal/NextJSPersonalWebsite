@@ -62,7 +62,6 @@ const NetlifyForm = React.forwardRef<HTMLFormElement, NetlifyFormProps>(
     };
     const formSchema = z
       .object({
-        "form-name": z.string(),
         name: z
           .string({
             required_error: t("form_name_required"),
@@ -97,7 +96,6 @@ const NetlifyForm = React.forwardRef<HTMLFormElement, NetlifyFormProps>(
     const form = useForm<z.infer<typeof formSchema>>({
       resolver: zodResolver(formSchema),
       defaultValues: {
-        "form-name": "contact",
         name: "",
         email: "",
         message: "",
@@ -106,7 +104,7 @@ const NetlifyForm = React.forwardRef<HTMLFormElement, NetlifyFormProps>(
     });
     const onSubmit = (values: z.infer<typeof formSchema>) => {
       const formValues = {
-        "form-name": values["form-name"],
+        "form-name": "contact",
         name: values.name,
         email: values.email,
         message: values.message,
