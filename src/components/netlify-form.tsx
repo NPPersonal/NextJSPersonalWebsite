@@ -110,7 +110,7 @@ const NetlifyForm = React.forwardRef<HTMLFormElement, NetlifyFormProps>(
         message: values.message,
       };
       //mimic sending form to server under development mode
-      if (process.env.NODE_ENV === "development") {
+      if (process.env.NODE_ENV !== "production") {
         try {
           console.log(formValues, values);
           setFormState({ sending: true, error: null, success: false });
@@ -145,7 +145,8 @@ const NetlifyForm = React.forwardRef<HTMLFormElement, NetlifyFormProps>(
           body: urlEncoded,
         }).then((response) => {
           if (response.ok === false) {
-            throw Error(t("from_submit_fail"));
+            setFormState({ sending: false, error: null, success: false });
+            throw new Error(t("from_submit_fail"));
           }
           form.reset();
           toast.success(t("from_submit_successful"));
@@ -187,7 +188,13 @@ const NetlifyForm = React.forwardRef<HTMLFormElement, NetlifyFormProps>(
     return (
       <React.Fragment>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} {...props}>
+          <form
+            data-netlify="true"
+            name="contact"
+            method="post"
+            onSubmit={form.handleSubmit(onSubmit)}
+            {...props}
+          >
             <FormField
               control={form.control}
               name="name"
