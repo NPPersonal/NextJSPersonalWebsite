@@ -152,16 +152,19 @@ const NetlifyForm = React.forwardRef<HTMLFormElement, NetlifyFormProps>(
           toast.success(t("from_submit_successful"));
           setFormState({ sending: false, error: null, success: true });
         });
-      } catch (error: unknown) {
-        reCAPTCHARef.current?.reset();
-        let err = null;
+      } catch (error) {
+        let errMessage = "";
         if (error instanceof Error) {
-          err = error;
+          errMessage = error.message;
         } else {
-          err = new Error(t("from_submit_fail"));
+          errMessage = t("from_submit_fail");
         }
-        toast.error(err.message);
-        setFormState({ sending: false, error: err, success: false });
+        toast.error(errMessage);
+        setFormState({
+          sending: false,
+          error: new Error(errMessage),
+          success: false,
+        });
       } finally {
         reCAPTCHARef.current?.reset();
       }
