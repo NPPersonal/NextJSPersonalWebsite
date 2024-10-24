@@ -36,11 +36,13 @@ interface FormState {
 /**
  * Netlify form the dynamic form.
  *
- * **Base on netlify runtime breaking change
+ * **Base on netlify runtime
  * https://opennext.js.org/netlify/forms#workaround-for-netlify-forms
- * There must have a static HTML form avaliable for deploy-time, the static
- * HTML form is located in folder under public with file name __forms.html
- * The fields name for this dynamic form must follow static HTML form**
+ * There must have a static HTML form avaliable for deploy-time.**
+ *
+ * **The static HTML form is located in folder under public with file name __forms.html
+ * when submitting form with ajax the form content must have same fields of
+ * static HTML form.**
  */
 const NetlifyForm = React.forwardRef<HTMLFormElement, NetlifyFormProps>(
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -146,10 +148,9 @@ const NetlifyForm = React.forwardRef<HTMLFormElement, NetlifyFormProps>(
 
       // This will run in production mode in Netlify server
       const urlEncoded = new URLSearchParams(formValues).toString();
-      console.log(urlEncoded);
       try {
         setFormState({ sending: true, error: null, success: false });
-        const response = await fetch("/", {
+        const response = await fetch("/__forms.html", {
           method: "POST",
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
           body: urlEncoded,
