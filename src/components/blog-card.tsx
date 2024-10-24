@@ -46,17 +46,16 @@ const BlogCard = React.forwardRef<typeof Card, BlogCardProps>(
             <CardDescription>{pubDate}</CardDescription>
           </CardHeader>
         </div>
-        {imageSrc ? (
-          <div className="relative w-full h-[200px] my-4">
-            <Image
-              src={imageSrc}
-              alt={`${title}-${guid}`}
-              fill
-              priority
-              style={{ objectFit: "cover" }}
-            />
-          </div>
-        ) : null}
+        <div className="relative w-full h-[200px] my-4">
+          <Image
+            src={imageSrc ? imageSrc : ""}
+            alt={`${title}-${guid}`}
+            fill
+            priority
+            style={{ objectFit: "cover" }}
+            placeholder="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM0OWy7CQAETwHo/2BhqwAAAABJRU5ErkJggg=="
+          />
+        </div>
         {tags ? (
           <div className="flex flex-wrap items-center my-4 mx-2">
             {tags.map((tag, i) => {
