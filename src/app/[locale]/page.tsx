@@ -38,7 +38,7 @@ export default async function HomePage({ params: { locale } }: HomePageProps) {
   )[0];
 
   return (
-    <div className="flex flex-col md:flex-row">
+    <div className="flex flex-col md:flex-row md:justify-evenly">
       <RenderInView
         className="pt-10 px-4"
         options={{
@@ -60,7 +60,7 @@ export default async function HomePage({ params: { locale } }: HomePageProps) {
           animate={{ opacity: 1, scale: 1 }}
           transition={{
             type: "spring",
-            damping: 10,
+            damping: 11,
             stiffness: 100,
             delay: 3,
           }}
@@ -69,9 +69,13 @@ export default async function HomePage({ params: { locale } }: HomePageProps) {
         </FramerMotionWrapper>
       </RenderInView>
       <FramerMotionWrapper
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.5 }}
+        initial={{ opacity: 0, y: -100 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          type: "spring",
+          damping: 10,
+          stiffness: 100,
+        }}
       >
         <div className="flex flex-col justify-center items-center px-4">
           <Image
@@ -79,11 +83,6 @@ export default async function HomePage({ params: { locale } }: HomePageProps) {
             src={landingImage}
             priority
             alt="landing"
-            sizes="100vw"
-            style={{
-              width: "100rem",
-              height: "auto",
-            }}
           />
         </div>
       </FramerMotionWrapper>
