@@ -102,7 +102,7 @@ const NetlifyForm = React.forwardRef<HTMLFormElement, NetlifyFormProps>(
         recaptcha: "",
       },
     });
-    const onSubmit = (values: z.infer<typeof formSchema>) => {
+    const onSubmit = async (values: z.infer<typeof formSchema>) => {
       const formValues = {
         "form-name": "contact",
         name: values.name,
@@ -139,19 +139,18 @@ const NetlifyForm = React.forwardRef<HTMLFormElement, NetlifyFormProps>(
       const urlEncoded = new URLSearchParams(formValues).toString();
       try {
         setFormState({ sending: true, error: null, success: false });
-        fetch("/", {
+        const response = await fetch("/", {
           method: "POST",
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
           body: urlEncoded,
-        }).then((response) => {
-          if (response.ok === false) {
-            setFormState({ sending: false, error: null, success: false });
-            throw new Error(t("from_submit_fail"));
-          }
-          form.reset();
-          toast.success(t("from_submit_successful"));
-          setFormState({ sending: false, error: null, success: true });
         });
+        if (response.ok === false) {
+          setFormState({ sending: false, error: null, success: false });
+          throw new Error(t("from_submit_fail"));
+        }
+        form.reset();
+        setFormState({ sending: false, error: null, success: true });
+        // toast.success(t("from_submit_successful"));
       } catch (error) {
         let errMessage = "";
         if (error instanceof Error) {
@@ -159,16 +158,22 @@ const NetlifyForm = React.forwardRef<HTMLFormElement, NetlifyFormProps>(
         } else {
           errMessage = t("from_submit_fail");
         }
-        toast.error(errMessage);
         setFormState({
           sending: false,
           error: new Error(errMessage),
           success: false,
         });
+        // toast.error(errMessage);
       } finally {
         reCAPTCHARef.current?.reset();
       }
     };
+
+    if (formState.sending === false && formState.error !== null) {
+      toast.error(formState.error.message);
+    } else if (formState.sending === false && formState.success) {
+      toast.success(t("from_submit_successful"));
+    }
 
     React.useEffect(() => {
       const retrieveReCAPTCHAKey = async () => {
