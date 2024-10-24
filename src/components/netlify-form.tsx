@@ -161,6 +161,7 @@ const NetlifyForm = React.forwardRef<HTMLFormElement, NetlifyFormProps>(
         }
         form.reset();
         setFormState({ sending: false, error: null, success: true });
+        toast.success(t("from_submit_successful"));
       } catch (error) {
         let errMessage = "";
         if (error instanceof Error) {
@@ -173,6 +174,7 @@ const NetlifyForm = React.forwardRef<HTMLFormElement, NetlifyFormProps>(
           error: new Error(errMessage),
           success: false,
         });
+        toast.error(errMessage);
       } finally {
         reCAPTCHARef.current?.reset();
       }
@@ -185,12 +187,6 @@ const NetlifyForm = React.forwardRef<HTMLFormElement, NetlifyFormProps>(
       };
       retrieveReCAPTCHAKey();
     }, []);
-
-    if (formState.sending === false && formState.error !== null) {
-      toast.error(formState.error.message);
-    } else if (formState.sending === false && formState.success) {
-      toast.success(t("from_submit_successful"));
-    }
 
     if (reCAPTCHAKey === null) {
       return (
