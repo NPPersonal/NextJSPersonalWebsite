@@ -137,6 +137,7 @@ const NetlifyForm = React.forwardRef<HTMLFormElement, NetlifyFormProps>(
 
       // This will run in production mode in Netlify server
       const urlEncoded = new URLSearchParams(formValues).toString();
+      console.log(urlEncoded);
       try {
         setFormState({ sending: true, error: null, success: false });
         const response = await fetch("/", {
@@ -150,7 +151,6 @@ const NetlifyForm = React.forwardRef<HTMLFormElement, NetlifyFormProps>(
         }
         form.reset();
         setFormState({ sending: false, error: null, success: true });
-        // toast.success(t("from_submit_successful"));
       } catch (error) {
         let errMessage = "";
         if (error instanceof Error) {
@@ -163,17 +163,10 @@ const NetlifyForm = React.forwardRef<HTMLFormElement, NetlifyFormProps>(
           error: new Error(errMessage),
           success: false,
         });
-        // toast.error(errMessage);
       } finally {
         reCAPTCHARef.current?.reset();
       }
     };
-
-    if (formState.sending === false && formState.error !== null) {
-      toast.error(formState.error.message);
-    } else if (formState.sending === false && formState.success) {
-      toast.success(t("from_submit_successful"));
-    }
 
     React.useEffect(() => {
       const retrieveReCAPTCHAKey = async () => {
@@ -183,16 +176,12 @@ const NetlifyForm = React.forwardRef<HTMLFormElement, NetlifyFormProps>(
       retrieveReCAPTCHAKey();
     }, []);
 
-    if (reCAPTCHAKey === null) {
-      return (
-        <div className="flex flex-col w-full justify-center items-center">
-          <LoadingIcon />
-          <Typography className="pt-4 text-lg" variant="strong">
-            {t("form_preparing")}
-          </Typography>
-        </div>
-      );
+    if (formState.sending === false && formState.error !== null) {
+      toast.error(formState.error.message);
+    } else if (formState.sending === false && formState.success) {
+      toast.success(t("from_submit_successful"));
     }
+
     return (
       <React.Fragment>
         <Form {...form}>
@@ -266,28 +255,41 @@ const NetlifyForm = React.forwardRef<HTMLFormElement, NetlifyFormProps>(
                 </FormItem>
               )}
             />
-            <FormField
-              control={form.control}
-              name="recaptcha"
-              render={() => (
-                <FormItem className="my-4">
-                  <ReCAPTCHA
-                    ref={reCAPTCHARef}
-                    sitekey={reCAPTCHAKey ? reCAPTCHAKey : ""}
-                    onChange={onReCAPTCHAChange}
-                    onErrored={onReCAPTCHAError}
-                    hl={reCAPTCHALocale}
-                  />
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <div className="text-center">
-              <Button type="submit" disabled={formState.sending}>
-                <PaperPlaneIcon />
-                <Typography className="ml-2">{t("form_submit_btn")}</Typography>
-              </Button>
-            </div>
+            {reCAPTCHAKey ? (
+              <FormField
+                control={form.control}
+                name="recaptcha"
+                render={() => (
+                  <FormItem className="my-4">
+                    <ReCAPTCHA
+                      ref={reCAPTCHARef}
+                      sitekey={reCAPTCHAKey ? reCAPTCHAKey : ""}
+                      onChange={onReCAPTCHAChange}
+                      onErrored={onReCAPTCHAError}
+                      hl={reCAPTCHALocale}
+                    />
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            ) : null}
+            {reCAPTCHAKey ? (
+              <div className="text-center">
+                <Button type="submit" disabled={formState.sending}>
+                  <PaperPlaneIcon />
+                  <Typography className="ml-2">
+                    {t("form_submit_btn")}
+                  </Typography>
+                </Button>
+              </div>
+            ) : (
+              <div className="my-4 flex flex-col w-full justify-center items-center">
+                <LoadingIcon />
+                <Typography className="pt-4 text-lg" variant="strong">
+                  {t("form_preparing")}
+                </Typography>
+              </div>
+            )}
           </form>
         </Form>
         <Toaster richColors position="bottom-center" />
