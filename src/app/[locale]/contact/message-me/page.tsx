@@ -29,7 +29,10 @@ export default async function MessageMePage({
         variant="h3"
       />
       <div>
-        <NetlifyForm className="p-4 border-2 rounded-lg border-foreground" />
+        <NetlifyForm
+          className="p-4 border-2 rounded-lg border-foreground"
+          reCAPTCHALocale={locale}
+        />
       </div>
       <div className="my-8 px-8 w-full flex justify-items-stretch items-center">
         <span className="mx-4 grow-[1] h-[5px] bg-foreground/90 rounded-lg" />
