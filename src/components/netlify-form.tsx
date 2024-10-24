@@ -33,6 +33,15 @@ interface FormState {
   sending: boolean;
 }
 
+/**
+ * Netlify form the dynamic form.
+ *
+ * **Base on netlify runtime breaking change
+ * https://opennext.js.org/netlify/forms#workaround-for-netlify-forms
+ * There must have a static HTML form avaliable for deploy-time, the static
+ * HTML form is located in folder under public with file name __forms.html
+ * The fields name for this dynamic form must follow static HTML form**
+ */
 const NetlifyForm = React.forwardRef<HTMLFormElement, NetlifyFormProps>(
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   ({ reCAPTCHALocale = "en", ...props }, ref) => {
@@ -182,13 +191,22 @@ const NetlifyForm = React.forwardRef<HTMLFormElement, NetlifyFormProps>(
       toast.success(t("from_submit_successful"));
     }
 
+    if (reCAPTCHAKey === null) {
+      return (
+        <div className="my-4 flex flex-col w-full justify-center items-center">
+          <LoadingIcon />
+          <Typography className="pt-4 text-lg" variant="strong">
+            {t("form_preparing")}
+          </Typography>
+        </div>
+      );
+    }
+
     return (
       <React.Fragment>
         <Form {...form}>
           <form
-            data-netlify="true"
             name="contact"
-            method="post"
             onSubmit={form.handleSubmit(onSubmit)}
             {...props}
           >
@@ -255,41 +273,28 @@ const NetlifyForm = React.forwardRef<HTMLFormElement, NetlifyFormProps>(
                 </FormItem>
               )}
             />
-            {reCAPTCHAKey ? (
-              <FormField
-                control={form.control}
-                name="recaptcha"
-                render={() => (
-                  <FormItem className="my-4">
-                    <ReCAPTCHA
-                      ref={reCAPTCHARef}
-                      sitekey={reCAPTCHAKey ? reCAPTCHAKey : ""}
-                      onChange={onReCAPTCHAChange}
-                      onErrored={onReCAPTCHAError}
-                      hl={reCAPTCHALocale}
-                    />
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            ) : null}
-            {reCAPTCHAKey ? (
-              <div className="text-center">
-                <Button type="submit" disabled={formState.sending}>
-                  <PaperPlaneIcon />
-                  <Typography className="ml-2">
-                    {t("form_submit_btn")}
-                  </Typography>
-                </Button>
-              </div>
-            ) : (
-              <div className="my-4 flex flex-col w-full justify-center items-center">
-                <LoadingIcon />
-                <Typography className="pt-4 text-lg" variant="strong">
-                  {t("form_preparing")}
-                </Typography>
-              </div>
-            )}
+            <FormField
+              control={form.control}
+              name="recaptcha"
+              render={() => (
+                <FormItem className="my-4">
+                  <ReCAPTCHA
+                    ref={reCAPTCHARef}
+                    sitekey={reCAPTCHAKey ? reCAPTCHAKey : ""}
+                    onChange={onReCAPTCHAChange}
+                    onErrored={onReCAPTCHAError}
+                    hl={reCAPTCHALocale}
+                  />
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <div className="text-center">
+              <Button type="submit" disabled={formState.sending}>
+                <PaperPlaneIcon />
+                <Typography className="ml-2">{t("form_submit_btn")}</Typography>
+              </Button>
+            </div>
           </form>
         </Form>
         <Toaster richColors position="bottom-center" />
