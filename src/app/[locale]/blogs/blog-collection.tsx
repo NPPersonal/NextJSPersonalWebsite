@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Typography } from "@/components/ui/typography";
 
 import { useMediumRSS } from "@/hooks/use-medium-rss";
-import { useTranslations } from "next-intl";
+import { useFormatter, useTranslations } from "next-intl";
 import React from "react";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
@@ -14,6 +14,7 @@ export interface BlogCollectionProps extends React.ComponentProps<"div"> {}
 const BlogCollection = React.forwardRef<HTMLDivElement, BlogCollectionProps>(
   ({ ...props }, ref) => {
     const t = useTranslations("BlogPage");
+    const formatter = useFormatter();
     const {
       feed,
       items,
@@ -22,7 +23,6 @@ const BlogCollection = React.forwardRef<HTMLDivElement, BlogCollectionProps>(
       getRSSFeed,
       thumbnailURLFromContent,
       htmlToText,
-      datetimeToDate,
     } = useMediumRSS();
     const openLink = (link: string | undefined) => {
       if (link) {
@@ -63,10 +63,20 @@ const BlogCollection = React.forwardRef<HTMLDivElement, BlogCollectionProps>(
 
                 //extract short text from content which is html string
                 const shortContent = htmlToText(item.content, 0, 400, " .....");
+
+                //convert date time to locale
+                const localeDateTime = formatter.dateTime(
+                  new Date(item.pubDate),
+                  {
+                    year: "numeric",
+                    month: "short",
+                    day: "numeric",
+                  }
+                );
                 return (
                   <div
                     key={`${item.guid}`}
-                    className="flex justify-center items-center"
+                    className="flex justify-center items-start"
                   >
                     <a
                       onClick={() => openLink(item.link)}
@@ -75,7 +85,7 @@ const BlogCollection = React.forwardRef<HTMLDivElement, BlogCollectionProps>(
                       <BlogCard
                         guid={item.guid}
                         title={item.title}
-                        pubDate={datetimeToDate(item.pubDate)}
+                        pubDate={localeDateTime}
                         blogContent={
                           <Typography variant="p">{shortContent}</Typography>
                         }

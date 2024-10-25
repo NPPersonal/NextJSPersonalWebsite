@@ -57,7 +57,7 @@ export default async function ProjectPage({
           return (
             <div
               key={`${mdx.title}-${i}`}
-              className="flex justify-center items-center"
+              className="flex justify-center items-start"
             >
               <Link href={`${category}/${mdx.slug}`}>
                 <ProjectCard
@@ -65,9 +65,7 @@ export default async function ProjectPage({
                   name={mdx.title}
                   category={mdx.category}
                   description={
-                    <Typography className="text-center" variant="strong">
-                      {mdx.description}
-                    </Typography>
+                    <Typography variant="strong">{mdx.description}</Typography>
                   }
                   publicCloudinaryImageId={mdx.previewImageID}
                 />
