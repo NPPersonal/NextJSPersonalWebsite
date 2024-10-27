@@ -25,7 +25,7 @@ export default async function NavigationBar() {
     right-0 bottom-0 py-4 flex flex-row items-center"
     >
       <div className="pl-4 pr-4 sm:pr-0">
-        <Link className="cursor-pointer" href="/">
+        <Link className="cursor-pointer" href="/" aria-label="Home">
           <Logo
             className="w-8 h-8"
             strokeWidth={6}

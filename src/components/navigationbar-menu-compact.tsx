@@ -33,7 +33,10 @@ const NavigationBarMenuCompact = React.forwardRef<
       onOpenChange={(value: boolean) => setOpen(value)}
       {...props}
     >
-      <DropdownMenuTrigger className="flex items-center focus:outline-none">
+      <DropdownMenuTrigger
+        className="flex items-center focus:outline-none"
+        aria-label="menu"
+      >
         <FramerMotionWrapper animate={{ rotate: open ? 90 : 0 }}>
           <HamburgerMenuIcon className="w-8 h-8 cursor-pointer" />
         </FramerMotionWrapper>

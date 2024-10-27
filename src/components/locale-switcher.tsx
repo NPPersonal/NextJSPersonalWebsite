@@ -30,7 +30,10 @@ const LocaleSwitcher = React.forwardRef<
   };
   return (
     <DropdownMenu {...props}>
-      <DropdownMenuTrigger className="flex items-center focus:outline-none">
+      <DropdownMenuTrigger
+        className="flex items-center focus:outline-none"
+        aria-label="Languages"
+      >
         <GlobeIcon className="cursor-pointer w-8 h-8" />
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
