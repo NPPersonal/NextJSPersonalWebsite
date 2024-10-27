@@ -3,6 +3,9 @@ const withNextIntl = createNextIntlPlugin();
 
 import createMDX from "@next/mdx";
 
+// @ts-check
+import withPlaiceholder from "@plaiceholder/next";
+
 const withMDX = createMDX({
   // Add markdown plugins here, as desired
 });
@@ -21,4 +24,4 @@ const nextConfig = {
   // Optionally, add any other Next.js config below
 };
 
-export default withNextIntl(withMDX(nextConfig));
+export default withNextIntl(withMDX(withPlaiceholder(nextConfig)));

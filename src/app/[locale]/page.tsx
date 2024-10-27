@@ -9,6 +9,9 @@ import { defaultMDXComponents } from "@/components/mdx-components";
 import DelayRender from "@/components/delay-render";
 import FramerMotionWrapper from "@/components/motion/framer-motion-client";
 import { NextJSPageProps } from "@/types/page-props";
+import { getPlaiceholder } from "plaiceholder";
+import { glob } from "glob";
+import { readFile } from "fs/promises";
 
 type HomePageProps = NextJSPageProps;
 
@@ -19,6 +22,19 @@ export async function generateMetadata() {
     description: t("metadata_description"),
   };
 }
+
+/**
+ * Get low resolution base 64 image from image source
+ *
+ * @param imagePath image file path
+ * @returns a base 64 low resolution image as string
+ */
+const getBase64Image = async (imagePath: string) => {
+  const imageSrc = await glob(imagePath);
+  const imageBuffer = await readFile(imageSrc[0]);
+  const plaiceholder = await getPlaiceholder(imageBuffer);
+  return plaiceholder.base64;
+};
 
 export default async function HomePage({ params: { locale } }: HomePageProps) {
   unstable_setRequestLocale(locale);
@@ -36,6 +52,7 @@ export default async function HomePage({ params: { locale } }: HomePageProps) {
       defaultMDXComponents
     )
   )[0];
+  const base64Image = await getBase64Image("public/static/images/landing.jpeg");
 
   return (
     <div className="flex flex-col md:flex-row md:justify-evenly">
@@ -75,6 +92,7 @@ export default async function HomePage({ params: { locale } }: HomePageProps) {
           type: "spring",
           damping: 10,
           stiffness: 100,
+          delay: 2,
         }}
       >
         <div className="flex flex-col justify-center items-center px-4">
@@ -83,6 +101,8 @@ export default async function HomePage({ params: { locale } }: HomePageProps) {
             src={landingImage}
             priority
             alt="landing"
+            blurDataURL={base64Image}
+            placeholder="blur"
           />
         </div>
       </FramerMotionWrapper>
