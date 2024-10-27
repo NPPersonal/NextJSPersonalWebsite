@@ -8,6 +8,7 @@ import NavigationBar from "@/components/navigationbar";
 import { routing } from "@/i18n/routing";
 import { NextJSLayoutProps } from "@/types/page-props";
 import Footer from "@/components/footer";
+import { Toaster } from "@/components/ui/sonner";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -53,6 +54,7 @@ export default async function RootLayout({
             <Footer />
           </ThemeProvider>
         </NextIntlClientProvider>
+        <Toaster richColors position="top-center" />
       </body>
     </html>
   );

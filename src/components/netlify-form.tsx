@@ -17,7 +17,6 @@ import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { getReCAPTCHAKey } from "@/lib/reCAPTCHA";
 import { Textarea } from "./ui/textarea";
-import { Toaster } from "./ui/sonner";
 import { toast } from "sonner";
 import { PaperPlaneIcon } from "@radix-ui/react-icons";
 import { Typography } from "./ui/typography";
@@ -270,31 +269,40 @@ const NetlifyForm = React.forwardRef<HTMLFormElement, NetlifyFormProps>(
                 </FormItem>
               )}
             />
-            <FormField
-              control={form.control}
-              name="recaptcha"
-              render={() => (
-                <FormItem className="my-4">
-                  <ReCAPTCHA
-                    ref={reCAPTCHARef}
-                    sitekey={reCAPTCHAKey ? reCAPTCHAKey : ""}
-                    onChange={onReCAPTCHAChange}
-                    onErrored={onReCAPTCHAError}
-                    hl={reCAPTCHALocale}
-                  />
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <div className="text-center">
-              <Button type="submit" disabled={formState.sending}>
-                <PaperPlaneIcon />
-                <Typography className="ml-2">{t("form_submit_btn")}</Typography>
-              </Button>
-            </div>
+            {!formState.sending && (
+              <FormField
+                control={form.control}
+                name="recaptcha"
+                render={() => (
+                  <FormItem className="my-4">
+                    <ReCAPTCHA
+                      ref={reCAPTCHARef}
+                      sitekey={reCAPTCHAKey ? reCAPTCHAKey : ""}
+                      onChange={onReCAPTCHAChange}
+                      onErrored={onReCAPTCHAError}
+                      hl={reCAPTCHALocale}
+                    />
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            )}
+            {formState.sending ? (
+              <div className="mt-4 flex justify-center items-center">
+                <LoadingIcon />
+              </div>
+            ) : (
+              <div className="text-center">
+                <Button type="submit" disabled={formState.sending}>
+                  <PaperPlaneIcon />
+                  <Typography className="ml-2">
+                    {t("form_submit_btn")}
+                  </Typography>
+                </Button>
+              </div>
+            )}
           </form>
         </Form>
-        <Toaster richColors position="bottom-center" />
       </React.Fragment>
     );
   }

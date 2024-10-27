@@ -24,7 +24,7 @@ const ProjectCard = React.forwardRef<typeof Card, ProjectCardProps>(
     return (
       <Card {...props}>
         <CloudinaryImage
-          className="flex justify-center items-center"
+          className="pt-4 flex justify-center items-center"
           imageStyle={{ width: "auto", height: "300px" }}
           publicImageId={publicCloudinaryImageId}
         />

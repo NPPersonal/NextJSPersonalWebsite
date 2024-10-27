@@ -61,7 +61,7 @@ export default async function ProjectPage({
             >
               <Link href={`${category}/${mdx.slug}`}>
                 <ProjectCard
-                  className="w-full sm:w-[350px] lg:w-[330px] xl:w-[410px] 2xl:w-[300px] cursor-pointer hover:z-[1] hover:scale-110 transition-all duration-75"
+                  className="overflow-hidden w-full sm:w-[350px] lg:w-[330px] xl:w-[410px] 2xl:w-[300px] cursor-pointer hover:z-[1] hover:scale-110 transition-all duration-75"
                   name={mdx.title}
                   category={mdx.category}
                   description={
