@@ -21,6 +21,7 @@ import { toast } from "sonner";
 import { PaperPlaneIcon } from "@radix-ui/react-icons";
 import { Typography } from "./ui/typography";
 import LoadingIcon from "./motion/loading-icon";
+import SendingMessageAnim from "./motion/send-message";
 
 export interface NetlifyFormProps extends React.ComponentProps<"form"> {
   reCAPTCHALocale?: string;
@@ -288,8 +289,8 @@ const NetlifyForm = React.forwardRef<HTMLFormElement, NetlifyFormProps>(
               />
             )}
             {formState.sending ? (
-              <div className="mt-4 flex justify-center items-center">
-                <LoadingIcon />
+              <div className="mt-4 flex justify-start items-center">
+                <SendingMessageAnim endX={150} />
               </div>
             ) : (
               <div className="text-center">
