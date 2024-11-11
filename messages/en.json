@@ -67,5 +67,9 @@
     "form_or": "OR",
     "metadata_title": "Message me",
     "metadata_description": "You can send me some message straight away and we can get in contact"
+  },
+  "Common": {
+    "try_again": "Try again",
+    "encounter_error": "There is an error"
   }
 }
