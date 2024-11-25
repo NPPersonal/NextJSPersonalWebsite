@@ -39,6 +39,7 @@ export async function getMDX(
 ): Promise<Array<MDXType>> {
   const results = await glob(path.join(pathDir, "/**/*.mdx"), {
     withFileTypes: true,
+    windowsPathsNoEscape: process.platform === "win32",
   });
   const filterResults = results
     .filter((path) => {
