@@ -6,6 +6,7 @@ This is a personal website and porting from [Gatesby](https://github.com/NPPerso
 
 - **[NextJS](https://nextjs.org)**: Core
 - **[next-intl](https://next-intl-docs.vercel.app/)**: Localization
+- **[shadcn-UI](https://ui.shadcn.com/)**: Headless UI base on **[Radix-UI](https://www.radix-ui.com/)**
 - **[react-google-recaptcha][https://www.npmjs.com/package/react-google-recaptcha]**: 3rd party for preventing spam while submitting form
 
 ### [NextJS](https://nextjs.org)
