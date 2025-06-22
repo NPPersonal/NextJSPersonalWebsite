@@ -16,7 +16,7 @@ import { PATH_TO_PROJECTS } from "@/constant";
 import { getMDXBy } from "@/lib/mdx";
 import { NextJSPageProps } from "@/types/page-props";
 import path from "node:path";
-import { getUserLocale } from "@/services/locale";
+import { getLocale } from "next-intl/server";
 
 type SlugPageProps = NextJSPageProps;
 
@@ -36,7 +36,7 @@ const mdxComponents: DefaultMDXComponentProps = {
 export async function generateMetadata({
   params: { category, slug },
 }: NextJSPageProps) {
-  const locale = await getUserLocale();
+  const locale = await getLocale();
   const results = await getMDXBy(
     slug,
     path.join(PATH_TO_PROJECTS, category),
@@ -52,7 +52,7 @@ export async function generateMetadata({
 export default async function SlugPage({
   params: { category, slug },
 }: SlugPageProps) {
-  const locale = await getUserLocale();
+  const locale = await getLocale();
   const results = await getMDXBy(
     slug,
     path.join(PATH_TO_PROJECTS, category),

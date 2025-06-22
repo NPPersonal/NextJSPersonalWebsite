@@ -7,8 +7,7 @@ import {
   defaultMDXComponents,
 } from "@/components/mdx-components";
 import { Typography } from "@/components/ui/typography";
-import { getUserLocale } from "@/services/locale";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
 const mdxComponents: DefaultMDXComponentProps = {
   ...defaultMDXComponents,
@@ -24,7 +23,7 @@ const mdxComponents: DefaultMDXComponentProps = {
 };
 
 export default async function About() {
-  const locale = await getUserLocale();
+  const locale = await getLocale();
   const t = await getTranslations("AboutPage");
   const titleText = t("title");
   const fullName = t("full_name");

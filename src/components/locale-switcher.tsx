@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState, useTransition } from "react";
+import React, { useTransition } from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -8,8 +8,9 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Typography } from "./ui/typography";
 import { GlobeIcon, ArrowRightIcon } from "@radix-ui/react-icons";
-import { getUserLocale, setUserLocale } from "@/services/locale";
 import { localeOptions, strToLocale } from "@/i18n/config";
+import { setUserLocale } from "@/services/locale";
+import { useLocale } from "next-intl";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface LocaleSwitcherProps
@@ -20,25 +21,14 @@ const LocaleSwitcher = React.forwardRef<
   LocaleSwitcherProps
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
 >(({ ...props }, ref) => {
-  const [currentLocale, setCurrentLocale] = useState<undefined | string>(
-    undefined
-  );
+  const currentLocale = useLocale();
   const [settingCookieLocale, setCookieLocale] = useTransition();
-
-  useEffect(() => {
-    const fetchCurrentLocale = async () => {
-      const locale = await getUserLocale();
-      setCurrentLocale(locale);
-    };
-    fetchCurrentLocale();
-  }, []);
 
   const handleChangeLocale = (nextLocaleKey: string) => {
     if (currentLocale !== nextLocaleKey) {
       const locale = strToLocale(nextLocaleKey);
       setCookieLocale(async () => {
         await setUserLocale(locale);
-        setCurrentLocale(locale);
       });
     }
   };
