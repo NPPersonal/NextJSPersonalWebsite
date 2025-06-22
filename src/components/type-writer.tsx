@@ -31,6 +31,7 @@ export default function TypeWriter({
   durationMS = 1000,
   immediateStart = true,
 }: TypeWriterProps) {
+  const timerId = React.useRef<number | undefined>(undefined);
   const textLength = text.split(separator).length;
   const letterIntervalMS = text.length > 0 ? durationMS / textLength : 0;
   const [textState, setTextState] = React.useState({
@@ -46,18 +47,23 @@ export default function TypeWriter({
     });
   };
 
+  // monitor incoming text change
   React.useEffect(() => {
-    let timerId = undefined;
+    setTextState({ remainChars: text.split(separator), currentText: "" });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [text]);
 
+  React.useEffect(() => {
     if (immediateStart && textState.remainChars.length === textLength) {
       handleLetter();
     } else if (textState.remainChars.length > 0) {
-      timerId = setTimeout(handleLetter, letterIntervalMS);
+      if (timerId.current) clearTimeout(timerId.current);
+      timerId.current = window.setTimeout(handleLetter, letterIntervalMS);
     }
 
     return () => {
-      if (timerId) {
-        clearTimeout(timerId);
+      if (timerId.current) {
+        clearTimeout(timerId.current);
       }
     };
   }, [textState, letterIntervalMS, textLength, immediateStart]);

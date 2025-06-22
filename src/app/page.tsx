@@ -1,19 +1,16 @@
-import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import TypeWriter from "@/components/type-writer";
 import { Typography } from "@/components/ui/typography";
 import RenderInView from "@/components/render-in-view";
 import Image from "next/image";
-import landingImage from "../../../public/static/images/landing.jpeg";
+import landingImage from "../../public/static/images/landing.jpeg";
 import { getMDX } from "@/lib/mdx";
 import { defaultMDXComponents } from "@/components/mdx-components";
 import DelayRender from "@/components/delay-render";
 import FramerMotionWrapper from "@/components/motion/framer-motion-client";
-import { NextJSPageProps } from "@/types/page-props";
 import { getPlaiceholder } from "plaiceholder";
 import { glob } from "glob";
 import { readFile } from "fs/promises";
-
-type HomePageProps = NextJSPageProps;
 
 export async function generateMetadata() {
   const t = await getTranslations("HomePage");
@@ -36,8 +33,8 @@ const getBase64Image = async (imagePath: string) => {
   return plaiceholder.base64;
 };
 
-export default async function HomePage({ params: { locale } }: HomePageProps) {
-  unstable_setRequestLocale(locale);
+export default async function HomePage() {
+  const locale = await getLocale();
   const t = await getTranslations("HomePage");
   const title = t("title");
   const subtitle = t("subtitle");

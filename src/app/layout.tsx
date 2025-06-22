@@ -1,11 +1,10 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
-import { unstable_setRequestLocale } from "next-intl/server";
+import { getLocale, getMessages } from "next-intl/server";
 import ThemeProvider from "@/components/theme-provider";
 import NavigationBar from "@/components/navigationbar";
-import { routing } from "@/i18n/routing";
+import { locales } from "@/i18n/config";
 import { NextJSLayoutProps } from "@/types/page-props";
 import Footer from "@/components/footer";
 import { Toaster } from "@/components/ui/sonner";
@@ -22,14 +21,13 @@ const geistMono = localFont({
 });
 
 export function generateStaticParams() {
-  return routing.locales.map((locale) => ({ locale }));
+  return locales.map((locale) => ({ locale }));
 }
 
 export default async function RootLayout({
   children,
-  params: { locale },
 }: Readonly<NextJSLayoutProps>) {
-  unstable_setRequestLocale(locale);
+  const locale = await getLocale();
   // Providing all messages to the client
   // side is the easiest way to get started
   const messages = await getMessages();

@@ -1,9 +1,8 @@
 import React from "react";
-import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import InViewTypeWriter from "@/components/in-view-type-writer";
 import CloudinaryImage from "@/components/CloudinaryImage";
 import { getMDX } from "@/lib/mdx";
-import { NextJSPageProps } from "@/types/page-props";
 import {
   DefaultMDXComponentProps,
   defaultMDXComponents,
@@ -23,8 +22,8 @@ const mdxComponents: DefaultMDXComponentProps = {
   center: (props) => <div className="text-center">{props.children}</div>,
 };
 
-export default async function About({ params: { locale } }: NextJSPageProps) {
-  unstable_setRequestLocale(locale);
+export default async function About() {
+  const locale = await getLocale();
   const t = await getTranslations("AboutPage");
   const titleText = t("title");
   const fullName = t("full_name");
