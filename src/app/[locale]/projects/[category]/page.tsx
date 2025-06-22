@@ -52,7 +52,7 @@ export default async function ProjectPage({
         title={titleText}
         variant="h3"
       />
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-fluid gap-3 w-full">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-3 w-full">
         {transformedMDXList.map((mdx, i) => {
           return (
             <div
