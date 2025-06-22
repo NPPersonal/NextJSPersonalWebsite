@@ -1,6 +1,6 @@
 import { MDXProvider } from "@mdx-js/react";
 import { Typography } from "./ui/typography";
-import { Link } from "@/i18n/routing";
+import Link from "next/link";
 
 export type DefaultMDXComponentProps = React.ComponentProps<
   typeof MDXProvider

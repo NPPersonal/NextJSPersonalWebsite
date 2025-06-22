@@ -1,6 +1,5 @@
 import React from "react";
 import ModeSwitcher from "./mode-switcher";
-import { Link } from "@/i18n/routing";
 import LocaleSwitcher from "./locale-switcher";
 import NavigationBarMenu from "./navigationbar-menu";
 import NavigationBarMenuCompact from "./navigationbar-menu-compact";
@@ -12,6 +11,7 @@ import {
 } from "@/lib/site-routes";
 import Logo from "./motion/logo";
 import NavigationBarTool from "./navigationbar-tool";
+import Link from "next/link";
 
 export default async function NavigationBar() {
   const blogData = await getBlogs();

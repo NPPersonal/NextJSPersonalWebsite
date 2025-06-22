@@ -8,8 +8,8 @@ import {
   NavigationMenuTrigger,
 } from "./ui/navigation-menu";
 import { Typography } from "./ui/typography";
-import { Link } from "@/i18n/routing";
 import { SiteRouteProps } from "@/lib/site-routes";
+import Link from "next/link";
 
 export interface NavigationBarMenuProps
   extends React.ComponentPropsWithRef<typeof NavigationMenu> {

@@ -1,10 +1,11 @@
 import InViewTypeWriter from "@/components/in-view-type-writer";
 import NetlifyForm from "@/components/netlify-form";
 import { Typography } from "@/components/ui/typography";
-import { Link } from "@/i18n/routing";
+import { getUserLocale } from "@/services/locale";
 import { NextJSPageProps } from "@/types/page-props";
 import { EnvelopeClosedIcon } from "@radix-ui/react-icons";
-import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
+import Link from "next/link";
 import React from "react";
 
 export async function generateMetadata() {
@@ -15,10 +16,8 @@ export async function generateMetadata() {
   };
 }
 
-export default async function MessageMePage({
-  params: { locale },
-}: NextJSPageProps) {
-  unstable_setRequestLocale(locale);
+export default async function MessageMePage({}: NextJSPageProps) {
+  const locale = await getUserLocale();
   const t = await getTranslations("MessageMe");
   const titleText = t("title");
   return (

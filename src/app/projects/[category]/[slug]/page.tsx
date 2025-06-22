@@ -15,8 +15,8 @@ import { Typography } from "@/components/ui/typography";
 import { PATH_TO_PROJECTS } from "@/constant";
 import { getMDXBy } from "@/lib/mdx";
 import { NextJSPageProps } from "@/types/page-props";
-import { unstable_setRequestLocale } from "next-intl/server";
 import path from "node:path";
+import { getUserLocale } from "@/services/locale";
 
 type SlugPageProps = NextJSPageProps;
 
@@ -34,8 +34,9 @@ const mdxComponents: DefaultMDXComponentProps = {
 };
 
 export async function generateMetadata({
-  params: { locale, category, slug },
+  params: { category, slug },
 }: NextJSPageProps) {
+  const locale = await getUserLocale();
   const results = await getMDXBy(
     slug,
     path.join(PATH_TO_PROJECTS, category),
@@ -49,9 +50,9 @@ export async function generateMetadata({
 }
 
 export default async function SlugPage({
-  params: { locale, category, slug },
+  params: { category, slug },
 }: SlugPageProps) {
-  unstable_setRequestLocale(locale);
+  const locale = await getUserLocale();
   const results = await getMDXBy(
     slug,
     path.join(PATH_TO_PROJECTS, category),

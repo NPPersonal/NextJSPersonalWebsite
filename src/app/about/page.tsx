@@ -1,5 +1,4 @@
 import React from "react";
-import { getLocale, getTranslations } from "next-intl/server";
 import InViewTypeWriter from "@/components/in-view-type-writer";
 import CloudinaryImage from "@/components/CloudinaryImage";
 import { getMDX } from "@/lib/mdx";
@@ -8,6 +7,8 @@ import {
   defaultMDXComponents,
 } from "@/components/mdx-components";
 import { Typography } from "@/components/ui/typography";
+import { getUserLocale } from "@/services/locale";
+import { getTranslations } from "next-intl/server";
 
 const mdxComponents: DefaultMDXComponentProps = {
   ...defaultMDXComponents,
@@ -23,7 +24,7 @@ const mdxComponents: DefaultMDXComponentProps = {
 };
 
 export default async function About() {
-  const locale = await getLocale();
+  const locale = await getUserLocale();
   const t = await getTranslations("AboutPage");
   const titleText = t("title");
   const fullName = t("full_name");

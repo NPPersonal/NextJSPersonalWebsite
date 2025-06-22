@@ -5,9 +5,10 @@ import ProjectCard from "@/components/project-card";
 import { Typography } from "@/components/ui/typography";
 import path from "node:path";
 import { PATH_TO_PROJECTS } from "@/constant";
-import { Link } from "@/i18n/routing";
-import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 import InViewTypeWriter from "@/components/in-view-type-writer";
+import Link from "next/link";
+import { getUserLocale } from "@/services/locale";
 
 type ProjectPageProps = NextJSPageProps;
 
@@ -34,9 +35,9 @@ export async function generateMetadata() {
 }
 
 export default async function ProjectPage({
-  params: { locale, category },
+  params: { category },
 }: ProjectPageProps) {
-  unstable_setRequestLocale(locale);
+  const locale = await getUserLocale();
   const mdxList = await getMDX(path.join(PATH_TO_PROJECTS, category), locale);
   const transformedMDXList = mdxList.length > 0 ? transformMDX(mdxList) : [];
 

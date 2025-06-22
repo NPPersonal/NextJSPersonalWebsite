@@ -8,8 +8,8 @@ import {
   getProjects,
 } from "@/lib/site-routes";
 import { Typography } from "./ui/typography";
-import { Link } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface FooterProps extends React.ComponentProps<"footer"> {}

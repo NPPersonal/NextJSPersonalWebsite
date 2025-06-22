@@ -12,9 +12,9 @@ import {
 } from "./ui/dropdown-menu";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import { SiteRouteProps } from "@/lib/site-routes";
-import { Link } from "@/i18n/routing";
 import { Typography } from "./ui/typography";
 import FramerMotionWrapper from "./motion/framer-motion-client";
+import Link from "next/link";
 
 export interface NavigationBarMenuCompactProps
   extends React.ComponentPropsWithoutRef<typeof DropdownMenu> {
