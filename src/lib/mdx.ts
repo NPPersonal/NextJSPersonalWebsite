@@ -37,10 +37,13 @@ export async function getMDX(
   encoding: BufferEncoding = "utf-8",
   components?: React.ComponentProps<typeof MDXProvider>["components"]
 ): Promise<Array<MDXType>> {
-  const results = await glob(path.join(pathDir, "/**/*.mdx"), {
-    withFileTypes: true,
-    windowsPathsNoEscape: process.platform === "win32",
-  });
+  const results = await glob(
+    path.join(pathDir, "/**/*.mdx").replace(/\\/g, "/"),
+    {
+      withFileTypes: true,
+      windowsPathsNoEscape: process.platform === "win32",
+    }
+  );
   const filterResults = results
     .filter((path) => {
       return path.name.match(`${matchName}.${locale}.mdx`) ? true : false;
@@ -91,8 +94,11 @@ export async function getMDXBy(
  * @returns
  */
 export async function getSubDirectoryNames(pathDir: string) {
-  const results = await glob(path.join(pathDir, "/*"), {
+  const results = await glob(path.join(pathDir, "/*").replace(/\\/g, "/"), {
     withFileTypes: true,
   });
-  return results.filter((path) => path.isDirectory()).map((path) => path.name);
+  const ret = results
+    .filter((path) => path.isDirectory())
+    .map((path) => path.name);
+  return ret;
 }
