@@ -1,4 +1,3 @@
-"use server";
 import { getTranslations } from "next-intl/server";
 
 export type SiteRouteProps = {
